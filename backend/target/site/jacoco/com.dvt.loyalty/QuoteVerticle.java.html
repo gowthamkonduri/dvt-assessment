@@ -38,7 +38,7 @@ public final class QuoteVerticle extends AbstractVerticle {
   // Constructor with just port - still reads other config from env
   public QuoteVerticle(int port) {
 <span class="nc" id="L40">    this(</span>
-<span class="nc" id="L41">      port,</span>
+      port,
 <span class="nc" id="L42">      System.getenv().getOrDefault(&quot;FX_BASE_URL&quot;, &quot;http://localhost:8081&quot;),</span>
 <span class="nc" id="L43">      System.getenv().getOrDefault(&quot;PROMO_BASE_URL&quot;, &quot;http://localhost:8082&quot;),</span>
 <span class="nc" id="L44">      Long.parseLong(System.getenv().getOrDefault(&quot;FX_TIMEOUT_MS&quot;, &quot;500&quot;)),</span>
@@ -47,14 +47,14 @@ public final class QuoteVerticle extends AbstractVerticle {
     );
 <span class="nc" id="L48">  }</span>
 
-<span class="fc" id="L50">  public QuoteVerticle(</span>
+  public QuoteVerticle(
     int port,
     String fxBaseUrl,
     String promoBaseUrl,
     long fxTimeoutMs,
     long promoTimeoutMs,
     int fxMaxAttempts
-  ) {
+<span class="fc" id="L57">  ) {</span>
 <span class="fc" id="L58">    this.port = port;</span>
 <span class="fc" id="L59">    this.fxBaseUrl = fxBaseUrl;</span>
 <span class="fc" id="L60">    this.promoBaseUrl = promoBaseUrl;</span>
@@ -68,9 +68,9 @@ public final class QuoteVerticle extends AbstractVerticle {
 <span class="fc" id="L68">    var router = Router.router(vertx);</span>
 
 <span class="fc" id="L70">    var quoteService = new QuoteService(</span>
-<span class="fc" id="L71">      new FxClient(vertx, fxBaseUrl, fxTimeoutMs),</span>
-<span class="fc" id="L72">      new PromoClient(vertx, promoBaseUrl, promoTimeoutMs),</span>
-<span class="fc" id="L73">      fxMaxAttempts</span>
+      new FxClient(vertx, fxBaseUrl, fxTimeoutMs),
+      new PromoClient(vertx, promoBaseUrl, promoTimeoutMs),
+      fxMaxAttempts
     );
 
 <span class="fc" id="L76">    router.route().handler(BodyHandler.create());</span>
@@ -93,7 +93,7 @@ public final class QuoteVerticle extends AbstractVerticle {
 <span class="fc" id="L93">        ctx.response().setStatusCode(400)</span>
 <span class="fc" id="L94">          .end(Json.encode(new ErrorResponse(&quot;INVALID_JSON&quot;, &quot;Request body must be valid JSON&quot;, java.util.List.of())));</span>
 <span class="fc" id="L95">        return;</span>
-      }
+<span class="fc" id="L96">      }</span>
 
 <span class="fc" id="L98">      quoteService.quote(request)</span>
 <span class="fc" id="L99">        .onSuccess(response -&gt; ctx.response().setStatusCode(200).end(Json.encode(response)))</span>

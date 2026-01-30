@@ -50,8 +50,8 @@ public final class QuoteService {
     // FX service can be flaky, so we retry on server errors
 <span class="fc" id="L51">    return Retry.withRetries(</span>
 <span class="fc" id="L52">        () -&gt; fxClient.quote(request.currency(), request.fareAmount()),</span>
-<span class="fc" id="L53">        fxMaxAttempts,</span>
-<span class="fc" id="L54">        QuoteService::isFxRetriable</span>
+        fxMaxAttempts,
+        QuoteService::isFxRetriable
       )
 <span class="fc" id="L56">      .compose(fx -&gt; {</span>
         // Base points = converted amount truncated to int (no rounding up)
@@ -64,7 +64,7 @@ public final class QuoteService {
         Future&lt;Integer&gt; promoBonusFuture;
 <span class="pc bpc" id="L65" title="1 of 4 branches missed.">        if (request.promoCode() == null || request.promoCode().isBlank()) {</span>
 <span class="fc" id="L66">          promoBonusFuture = Future.succeededFuture(0);</span>
-<span class="fc" id="L67">        } else {</span>
+        } else {
 <span class="fc" id="L68">          promoBonusFuture = promoClient.fetch(request.promoCode())</span>
 <span class="fc" id="L69">            .map(promo -&gt; {</span>
 <span class="fc" id="L70">              maybeAddExpiryWarning(promo.expiresAt(), warnings);</span>
@@ -84,10 +84,10 @@ public final class QuoteService {
           }
 
 <span class="fc" id="L86">          return new PointsQuoteResponse(</span>
-<span class="fc" id="L87">            basePoints,</span>
-<span class="fc" id="L88">            tierBonus,</span>
+            basePoints,
+            tierBonus,
 <span class="fc" id="L89">            promoBonus,</span>
-<span class="fc" id="L90">            total,</span>
+            total,
 <span class="fc" id="L91">            fx.rate(),</span>
 <span class="fc" id="L92">            List.copyOf(warnings)</span>
           );
@@ -113,13 +113,13 @@ public final class QuoteService {
 
 <span class="pc bpc" id="L114" title="1 of 2 branches missed.">    if (request.fareAmount() == null) {</span>
 <span class="nc" id="L115">      errors.add(&quot;fareAmount is required&quot;);</span>
-<span class="pc bfc" id="L116" title="All 2 branches covered.">    } else if (request.fareAmount().signum() &lt;= 0) {</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">    } else if (request.fareAmount().signum() &lt;= 0) {</span>
 <span class="fc" id="L117">      errors.add(&quot;fareAmount must be &gt; 0&quot;);</span>
     }
 
 <span class="pc bpc" id="L120" title="2 of 4 branches missed.">    if (request.currency() == null || request.currency().isBlank()) {</span>
 <span class="nc" id="L121">      errors.add(&quot;currency is required&quot;);</span>
-<span class="pc bfc" id="L122" title="All 2 branches covered.">    } else if (!SupportedCurrencies.VALUES.contains(request.currency())) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">    } else if (!SupportedCurrencies.VALUES.contains(request.currency())) {</span>
 <span class="fc" id="L123">      errors.add(&quot;currency must be one of &quot; + SupportedCurrencies.VALUES);</span>
     }
 
@@ -147,9 +147,9 @@ public final class QuoteService {
 <span class="fc bfc" id="L147" title="All 2 branches covered.">      if (Time.isWithinDays(expiry, Instant.now(), 7)) {</span>
 <span class="fc" id="L148">        warnings.add(Warnings.PROMO_EXPIRES_SOON);</span>
       }
-<span class="pc" id="L150">    } catch (Exception ignored) {</span>
+<span class="nc" id="L150">    } catch (Exception ignored) {</span>
       // Ignore bad expiry formats; promo still applies.
-    }
+<span class="fc" id="L152">    }</span>
 <span class="fc" id="L153">  }</span>
 
   private static boolean isTimeout(Throwable err) {
