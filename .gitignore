@@ -1,0 +1,38 @@
+# IDE
+.idea/
+*.iml
+
+# Gradle (Android)
+.gradle/
+build/
+local.properties
+
+# Maven (Java)
+target/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Xcode
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+DerivedData/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
