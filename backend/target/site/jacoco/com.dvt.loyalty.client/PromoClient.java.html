@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PromoClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Loyalty Points Quote Service</a> &gt; <a href="index.source.html" class="el_package">com.dvt.loyalty.client</a> &gt; <span class="el_source">PromoClient.java</span></div><h1>PromoClient.java</h1><pre class="source lang-java linenums">package com.dvt.loyalty.client;
+
+import io.vertx.core.Future;
+import io.vertx.core.Vertx;
+import io.vertx.core.json.Json;
+import io.vertx.ext.web.client.WebClient;
+
+import java.util.Objects;
+
+/**
+ * Fetches promo details from external promo service.
+ * Has a short timeout since promos are nice-to-have - we don't want to block the quote.
+ */
+public final class PromoClient {
+
+  private final WebClient webClient;
+  private final String baseUrl;
+  private final long timeoutMs;
+
+<span class="fc" id="L20">  public PromoClient(Vertx vertx, String baseUrl, long timeoutMs) {</span>
+<span class="fc" id="L21">    this.webClient = WebClient.create(vertx);</span>
+<span class="fc" id="L22">    this.baseUrl = Objects.requireNonNull(baseUrl);</span>
+<span class="fc" id="L23">    this.timeoutMs = timeoutMs;</span>
+<span class="fc" id="L24">  }</span>
+
+  public Future&lt;PromoResponse&gt; fetch(String promoCode) {
+<span class="fc" id="L27">    String url = baseUrl + &quot;/promo/&quot; + promoCode;</span>
+
+<span class="fc" id="L29">    return webClient</span>
+<span class="fc" id="L30">      .getAbs(url)</span>
+<span class="fc" id="L31">      .timeout(timeoutMs)</span>
+<span class="fc" id="L32">      .send()</span>
+<span class="fc" id="L33">      .compose(resp -&gt; {</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (resp.statusCode() != 200) {</span>
+<span class="fc" id="L35">          return Future.failedFuture(new UpstreamException(&quot;PROMO&quot;, resp.statusCode(), &quot;Promo service error&quot;));</span>
+        }
+        try {
+<span class="fc" id="L38">          var parsed = Json.decodeValue(resp.body(), PromoResponse.class);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">          if (parsed == null) {</span>
+<span class="fc" id="L40">            return Future.failedFuture(new UpstreamException(&quot;PROMO&quot;, 502, &quot;Promo response missing fields&quot;));</span>
+          }
+<span class="fc" id="L42">          return Future.succeededFuture(parsed);</span>
+<span class="fc" id="L43">        } catch (Exception e) {</span>
+<span class="fc" id="L44">          return Future.failedFuture(new UpstreamException(&quot;PROMO&quot;, 502, &quot;Promo response invalid JSON&quot;));</span>
+        }
+      });
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
