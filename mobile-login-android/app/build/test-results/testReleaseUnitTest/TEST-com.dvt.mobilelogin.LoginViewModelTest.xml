@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.dvt.mobilelogin.LoginViewModelTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-01-30T09:36:35" hostname="Mac" time="0.927">
+  <properties/>
+  <testcase name="success_emitsNavigationEvent" classname="com.dvt.mobilelogin.LoginViewModelTest" time="0.868"/>
+  <testcase name="lockout_afterThreeFailures" classname="com.dvt.mobilelogin.LoginViewModelTest" time="0.005"/>
+  <testcase name="offline_showsMessageAndDoesNotCallService" classname="com.dvt.mobilelogin.LoginViewModelTest" time="0.006"/>
+  <testcase name="validation_enablesDisablesButton" classname="com.dvt.mobilelogin.LoginViewModelTest" time="0.001"/>
+  <testcase name="error_incrementsFailureCount" classname="com.dvt.mobilelogin.LoginViewModelTest" time="0.003"/>
+  <testcase name="rememberMe_persistsToken" classname="com.dvt.mobilelogin.LoginViewModelTest" time="0.043"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/gowthamkonduri/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.17/e3c251a39dc90badaf71c83427ba46840f219d8d/byte-buddy-agent-1.14.17.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
