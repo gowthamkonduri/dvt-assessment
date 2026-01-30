@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dvt.loyalty.QuoteVerticleComponentTest" time="2.639" tests="13" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="25"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/gowthamkonduri/Documents/dvt-assessment/backend/target/test-classes:/Users/gowthamkonduri/Documents/dvt-assessment/backend/target/classes:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web/4.5.10/vertx-web-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-common/4.5.10/vertx-web-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-auth-common/4.5.10/vertx-auth-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-bridge-common/4.5.10/vertx-bridge-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-core/4.5.10/vertx-core-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-client/4.5.10/vertx-web-client-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-uri-template/4.5.10/vertx-uri-template-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-classic/1.5.12/logback-classic-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-core/1.5.12/logback-core-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-junit5/4.5.10/vertx-junit5-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/Users/gowthamkonduri/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/gowthamkonduri/.m2/repository/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar:/Users/gowthamkonduri/.m2/repository/org/wiremock/wiremock/3.9.1/wiremock-3.9.1.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-server/11.0.20/jetty-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-http/11.0.20/jetty-http-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-io/11.0.20/jetty-io-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.20/jetty-servlet-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-security/11.0.20/jetty-security-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlets/11.0.20/jetty-servlets-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-util/11.0.20/jetty-util-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-webapp/11.0.20/jetty-webapp-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-xml/11.0.20/jetty-xml-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-proxy/11.0.20/jetty-proxy-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-client/11.0.20/jetty-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-server/11.0.20/http2-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-common/11.0.20/http2-common-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-hpack/11.0.20/http2-hpack-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-server/11.0.20/jetty-alpn-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-server/11.0.20/jetty-alpn-java-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-client/11.0.20/jetty-alpn-java-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-client/11.0.20/jetty-alpn-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/gowthamkonduri/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.16.1/jackson-datatype-jsr310-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar:/Users/gowthamkonduri/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-legacy/2.10.0/xmlunit-legacy-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-placeholders/2.10.0/xmlunit-placeholders-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/net/javacrumbs/json-unit/json-unit-core/2.40.0/json-unit-core-2.40.0.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/gowthamkonduri/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars/4.3.1/handlebars-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars-helpers/4.3.1/handlebars-helpers-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/commons-fileupload/commons-fileupload/1.5/commons-fileupload-1.5.jar:/Users/gowthamkonduri/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/gowthamkonduri/.m2/repository/com/networknt/json-schema-validator/1.5.0/json-schema-validator-1.5.0.jar:/Users/gowthamkonduri/.m2/repository/com/ethlo/time/itu/1.10.2/itu-1.10.2.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.16.1/jackson-dataformat-yaml-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/yaml/snakeyaml/2.0/snakeyaml-2.0.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/London"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="25"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/gowthamkonduri/Documents/dvt-assessment/backend/target/surefire/surefirebooter-20260130092806238_3.jar /Users/gowthamkonduri/Documents/dvt-assessment/backend/target/surefire 2026-01-30T09-28-06_188-jvmRun1 surefire-20260130092806238_1tmp surefire_0-20260130092806238_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/gowthamkonduri/Documents/dvt-assessment/backend/target/test-classes:/Users/gowthamkonduri/Documents/dvt-assessment/backend/target/classes:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web/4.5.10/vertx-web-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-common/4.5.10/vertx-web-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-auth-common/4.5.10/vertx-auth-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-bridge-common/4.5.10/vertx-bridge-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-core/4.5.10/vertx-core-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-client/4.5.10/vertx-web-client-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-uri-template/4.5.10/vertx-uri-template-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-classic/1.5.12/logback-classic-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-core/1.5.12/logback-core-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-junit5/4.5.10/vertx-junit5-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/Users/gowthamkonduri/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/gowthamkonduri/.m2/repository/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar:/Users/gowthamkonduri/.m2/repository/org/wiremock/wiremock/3.9.1/wiremock-3.9.1.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-server/11.0.20/jetty-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-http/11.0.20/jetty-http-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-io/11.0.20/jetty-io-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.20/jetty-servlet-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-security/11.0.20/jetty-security-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlets/11.0.20/jetty-servlets-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-util/11.0.20/jetty-util-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-webapp/11.0.20/jetty-webapp-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-xml/11.0.20/jetty-xml-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-proxy/11.0.20/jetty-proxy-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-client/11.0.20/jetty-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-server/11.0.20/http2-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-common/11.0.20/http2-common-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-hpack/11.0.20/http2-hpack-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-server/11.0.20/jetty-alpn-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-server/11.0.20/jetty-alpn-java-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-client/11.0.20/jetty-alpn-java-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-client/11.0.20/jetty-alpn-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/gowthamkonduri/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.16.1/jackson-datatype-jsr310-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar:/Users/gowthamkonduri/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-legacy/2.10.0/xmlunit-legacy-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-placeholders/2.10.0/xmlunit-placeholders-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/net/javacrumbs/json-unit/json-unit-core/2.40.0/json-unit-core-2.40.0.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/gowthamkonduri/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars/4.3.1/handlebars-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars-helpers/4.3.1/handlebars-helpers-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/commons-fileupload/commons-fileupload/1.5/commons-fileupload-1.5.jar:/Users/gowthamkonduri/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/gowthamkonduri/.m2/repository/com/networknt/json-schema-validator/1.5.0/json-schema-validator-1.5.0.jar:/Users/gowthamkonduri/.m2/repository/com/ethlo/time/itu/1.10.2/itu-1.10.2.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.16.1/jackson-dataformat-yaml-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/yaml/snakeyaml/2.0/snakeyaml-2.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/gowthamkonduri"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk-25.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/gowthamkonduri/Documents/dvt-assessment/backend"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/gowthamkonduri/Documents/dvt-assessment/backend/target/surefire/surefirebooter-20260130092806238_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="org.eclipse.jetty.http.HttpGenerator.STRICT" value="true"/>
+    <property name="java.runtime.version" value="25.0.2+10-LTS-69"/>
+    <property name="user.name" value="gowthamkonduri"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.2"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/gowthamkonduri/.m2/repository"/>
+    <property name="javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom" value="com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="jetty.git.hash" value="922f8dc188f7011e60d0361de585fd4ac4d63064"/>
+    <property name="java.io.tmpdir" value="/var/folders/y8/cj3_j50n1bgdzj77q2cx4btr0000gn/T/"/>
+    <property name="java.version" value="25.0.2"/>
+    <property name="user.dir" value="/Users/gowthamkonduri/Documents/dvt-assessment/backend"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/gowthamkonduri/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.0.2+10-LTS-69"/>
+    <property name="stdin.encoding" value="UTF-8"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="javax.xml.transform.TransformerFactory" value="com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="69.0"/>
+  </properties>
+  <testcase name="fx4xx_isNotRetried_andReturns502(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="1.703">
+    <system-out><![CDATA[2026-01-30T09:28:07.995 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:08.023 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6a2057e{/__admin,null,AVAILABLE}
+2026-01-30T09:28:08.028 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:08.028 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7f31937b{/,null,AVAILABLE}
+2026-01-30T09:28:08.036 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@2a6fb62f{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50967}
+2026-01-30T09:28:08.046 INFO  [main] org.eclipse.jetty.server.Server - Started Server@53d2b827{STARTING}[11.0.20,sto=1000] @1755ms
+2026-01-30T09:28:08.046 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:08.047 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1e749235{/__admin,null,AVAILABLE}
+2026-01-30T09:28:08.048 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:08.048 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@870a9f2{/,null,AVAILABLE}
+2026-01-30T09:28:08.048 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@6dbb3d7d{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50968}
+2026-01-30T09:28:08.048 INFO  [main] org.eclipse.jetty.server.Server - Started Server@3ea1729e{STARTING}[11.0.20,sto=1000] @1758ms
+2026-01-30T09:28:08.196 WARN  [main] io.netty.resolver.dns.DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+Listening on 50969
+2026-01-30T09:28:08.877 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@3ea1729e{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.877 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@3ea1729e{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.882 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@6dbb3d7d{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:08.883 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@870a9f2{/,null,STOPPED}
+2026-01-30T09:28:08.883 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@1e749235{/__admin,null,STOPPED}
+2026-01-30T09:28:08.885 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@53d2b827{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.885 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@53d2b827{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.886 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@2a6fb62f{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:08.887 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7f31937b{/,null,STOPPED}
+2026-01-30T09:28:08.887 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6a2057e{/__admin,null,STOPPED}
+]]></system-out>
+    <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:176)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:599)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:755)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
+	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
+	at java.base/sun.util.cldr.CLDRLocaleProviderAdapter.<init>(CLDRLocaleProviderAdapter.java:75)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.forType(LocaleProviderAdapter.java:181)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.findAdapter(LocaleProviderAdapter.java:280)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.getAdapter(LocaleProviderAdapter.java:251)
+	at java.base/java.util.Calendar.createCalendar(Calendar.java:1692)
+	at java.base/java.util.Calendar.getInstance(Calendar.java:1659)
+	at java.base/java.text.SimpleDateFormat.initializeCalendar(SimpleDateFormat.java:683)
+	at java.base/java.text.SimpleDateFormat.<init>(SimpleDateFormat.java:627)
+	at com.fasterxml.jackson.databind.util.StdDateFormat.<clinit>(StdDateFormat.java:116)
+	at com.fasterxml.jackson.databind.ObjectMapper.<clinit>(ObjectMapper.java:409)
+	at com.github.tomakehurst.wiremock.common.Json$1.initialValue(Json.java:45)
+	at com.github.tomakehurst.wiremock.common.Json$1.initialValue(Json.java:42)
+	at java.base/java.lang.ThreadLocal.setInitialValue(ThreadLocal.java:203)
+	at java.base/java.lang.ThreadLocal.get(ThreadLocal.java:193)
+	at java.base/java.lang.ThreadLocal.get(ThreadLocal.java:171)
+	at com.github.tomakehurst.wiremock.common.Json.getObjectMapper(Json.java:111)
+	at com.github.tomakehurst.wiremock.WireMockServer.start(WireMockServer.java:187)
+	at com.dvt.loyalty.QuoteVerticleComponentTest.startWireMock(QuoteVerticleComponentTest.java:37)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at io.vertx.junit5.VertxExtension.interceptBeforeEachMethod(VertxExtension.java:148)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptLifecycleMethod(TimeoutExtension.java:126)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptBeforeEachMethod(TimeoutExtension.java:76)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:506)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$synthesizeBeforeEachMethodAdapter$21(ClassBasedTestDescriptor.java:491)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeEachMethods$3(TestMethodTestDescriptor.java:171)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeMethodsOrCallbacksUntilExceptionOccurs$6(TestMethodTestDescriptor.java:199)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeMethodsOrCallbacksUntilExceptionOccurs(TestMethodTestDescriptor.java:199)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeEachMethods(TestMethodTestDescriptor.java:168)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: java.io.IOException: Error while instrumenting sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 112 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 69
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:200)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 113 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/provider/LocaleDataProvider with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:176)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:599)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:755)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
+	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:261)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:199)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:158)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:143)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:104)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:179)
+	at java.base/sun.util.resources.LocaleData.getNumberFormatData(LocaleData.java:175)
+	at java.base/sun.util.locale.provider.LocaleResources.getDecimalFormatSymbolsData(LocaleResources.java:223)
+	at java.base/java.text.DecimalFormatSymbols.initialize(DecimalFormatSymbols.java:829)
+	at java.base/java.text.DecimalFormatSymbols.<init>(DecimalFormatSymbols.java:115)
+	at java.base/sun.util.locale.provider.DecimalFormatSymbolsProviderImpl.getInstance(DecimalFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DecimalFormatSymbols.getInstance(DecimalFormatSymbols.java:183)
+	at java.base/java.util.Formatter.getDecimalFormatSymbols(Formatter.java:2031)
+	at java.base/java.util.Formatter.getZero(Formatter.java:2039)
+	at java.base/java.util.Formatter$FormatSpecifier.localizedMagnitude(Formatter.java:4678)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3511)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3496)
+	at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:3194)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3155)
+	at java.base/java.util.Formatter.format(Formatter.java:2761)
+	at java.base/java.util.Formatter.format(Formatter.java:2698)
+	at java.base/java.lang.String.format(String.java:4455)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.toString(AbstractNetworkConnector.java:114)
+	at org.eclipse.jetty.server.AbstractConnector$Acceptor.run(AbstractConnector.java:717)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:969)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.doRunJob(QueuedThreadPool.java:1194)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$Runner.run(QueuedThreadPool.java:1149)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+Caused by: java.io.IOException: Error while instrumenting sun/util/resources/provider/LocaleDataProvider with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 43 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 69
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:200)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 44 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_001 with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:176)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:599)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.loadResourceBundle(LocaleDataProvider.java:53)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.getBundle(LocaleDataProvider.java:39)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:264)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:199)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:158)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:143)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:104)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:179)
+	at java.base/sun.util.resources.LocaleData.getNumberFormatData(LocaleData.java:175)
+	at java.base/sun.util.locale.provider.LocaleResources.getDecimalFormatSymbolsData(LocaleResources.java:223)
+	at java.base/java.text.DecimalFormatSymbols.initialize(DecimalFormatSymbols.java:829)
+	at java.base/java.text.DecimalFormatSymbols.<init>(DecimalFormatSymbols.java:115)
+	at java.base/sun.util.locale.provider.DecimalFormatSymbolsProviderImpl.getInstance(DecimalFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DecimalFormatSymbols.getInstance(DecimalFormatSymbols.java:183)
+	at java.base/java.util.Formatter.getDecimalFormatSymbols(Formatter.java:2031)
+	at java.base/java.util.Formatter.getZero(Formatter.java:2039)
+	at java.base/java.util.Formatter$FormatSpecifier.localizedMagnitude(Formatter.java:4678)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3511)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3496)
+	at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:3194)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3155)
+	at java.base/java.util.Formatter.format(Formatter.java:2761)
+	at java.base/java.util.Formatter.format(Formatter.java:2698)
+	at java.base/java.lang.String.format(String.java:4455)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.toString(AbstractNetworkConnector.java:114)
+	at org.slf4j.helpers.MessageFormatter.safeObjectAppend(MessageFormatter.java:291)
+	at org.slf4j.helpers.MessageFormatter.deeplyAppendParameter(MessageFormatter.java:263)
+	at org.slf4j.helpers.MessageFormatter.arrayFormat(MessageFormatter.java:225)
+	at org.slf4j.helpers.MessageFormatter.arrayFormat(MessageFormatter.java:160)
+	at ch.qos.logback.classic.spi.LoggingEvent.getFormattedMessage(LoggingEvent.java:440)
+	at ch.qos.logback.classic.spi.LoggingEvent.prepareForDeferredProcessing(LoggingEvent.java:299)
+	at ch.qos.logback.core.OutputStreamAppender.subAppend(OutputStreamAppender.java:255)
+	at ch.qos.logback.core.OutputStreamAppender.append(OutputStreamAppender.java:111)
+	at ch.qos.logback.core.UnsynchronizedAppenderBase.doAppend(UnsynchronizedAppenderBase.java:85)
+	at ch.qos.logback.core.spi.AppenderAttachableImpl.appendLoopOnAppenders(AppenderAttachableImpl.java:51)
+	at ch.qos.logback.classic.Logger.appendLoopOnAppenders(Logger.java:272)
+	at ch.qos.logback.classic.Logger.callAppenders(Logger.java:259)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:426)
+	at ch.qos.logback.classic.Logger.filterAndLog_1(Logger.java:402)
+	at ch.qos.logback.classic.Logger.info(Logger.java:588)
+	at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:376)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:75)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:228)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:428)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.github.tomakehurst.wiremock.jetty.JettyHttpServer.start(JettyHttpServer.java:139)
+	at com.github.tomakehurst.wiremock.WireMockServer.start(WireMockServer.java:189)
+	at com.dvt.loyalty.QuoteVerticleComponentTest.startWireMock(QuoteVerticleComponentTest.java:37)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at io.vertx.junit5.VertxExtension.interceptBeforeEachMethod(VertxExtension.java:148)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptLifecycleMethod(TimeoutExtension.java:126)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptBeforeEachMethod(TimeoutExtension.java:76)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:506)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$synthesizeBeforeEachMethodAdapter$21(ClassBasedTestDescriptor.java:491)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeEachMethods$3(TestMethodTestDescriptor.java:171)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeMethodsOrCallbacksUntilExceptionOccurs$6(TestMethodTestDescriptor.java:199)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeMethodsOrCallbacksUntilExceptionOccurs(TestMethodTestDescriptor.java:199)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeEachMethods(TestMethodTestDescriptor.java:168)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: java.io.IOException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_001 with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 136 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 69
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:200)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 137 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_GB with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:176)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:599)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.loadResourceBundle(LocaleDataProvider.java:53)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.getBundle(LocaleDataProvider.java:39)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:264)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:199)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:143)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:104)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:179)
+	at java.base/sun.util.resources.LocaleData.getNumberFormatData(LocaleData.java:175)
+	at java.base/sun.util.locale.provider.LocaleResources.getDecimalFormatSymbolsData(LocaleResources.java:223)
+	at java.base/java.text.DecimalFormatSymbols.initialize(DecimalFormatSymbols.java:829)
+	at java.base/java.text.DecimalFormatSymbols.<init>(DecimalFormatSymbols.java:115)
+	at java.base/sun.util.locale.provider.DecimalFormatSymbolsProviderImpl.getInstance(DecimalFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DecimalFormatSymbols.getInstance(DecimalFormatSymbols.java:183)
+	at java.base/java.util.Formatter.getDecimalFormatSymbols(Formatter.java:2031)
+	at java.base/java.util.Formatter.getZero(Formatter.java:2039)
+	at java.base/java.util.Formatter$FormatSpecifier.localizedMagnitude(Formatter.java:4678)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3511)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3496)
+	at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:3194)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3155)
+	at java.base/java.util.Formatter.format(Formatter.java:2761)
+	at java.base/java.util.Formatter.format(Formatter.java:2698)
+	at java.base/java.lang.String.format(String.java:4455)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.toString(AbstractNetworkConnector.java:114)
+	at org.slf4j.helpers.MessageFormatter.safeObjectAppend(MessageFormatter.java:291)
+	at org.slf4j.helpers.MessageFormatter.deeplyAppendParameter(MessageFormatter.java:263)
+	at org.slf4j.helpers.MessageFormatter.arrayFormat(MessageFormatter.java:225)
+	at org.slf4j.helpers.MessageFormatter.arrayFormat(MessageFormatter.java:160)
+	at ch.qos.logback.classic.spi.LoggingEvent.getFormattedMessage(LoggingEvent.java:440)
+	at ch.qos.logback.classic.spi.LoggingEvent.prepareForDeferredProcessing(LoggingEvent.java:299)
+	at ch.qos.logback.core.OutputStreamAppender.subAppend(OutputStreamAppender.java:255)
+	at ch.qos.logback.core.OutputStreamAppender.append(OutputStreamAppender.java:111)
+	at ch.qos.logback.core.UnsynchronizedAppenderBase.doAppend(UnsynchronizedAppenderBase.java:85)
+	at ch.qos.logback.core.spi.AppenderAttachableImpl.appendLoopOnAppenders(AppenderAttachableImpl.java:51)
+	at ch.qos.logback.classic.Logger.appendLoopOnAppenders(Logger.java:272)
+	at ch.qos.logback.classic.Logger.callAppenders(Logger.java:259)
+	at ch.qos.logback.classic.Logger.buildLoggingEventAndAppend(Logger.java:426)
+	at ch.qos.logback.classic.Logger.filterAndLog_1(Logger.java:402)
+	at ch.qos.logback.classic.Logger.info(Logger.java:588)
+	at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:376)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStart(AbstractNetworkConnector.java:75)
+	at org.eclipse.jetty.server.ServerConnector.doStart(ServerConnector.java:228)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at org.eclipse.jetty.server.Server.doStart(Server.java:428)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:93)
+	at com.github.tomakehurst.wiremock.jetty.JettyHttpServer.start(JettyHttpServer.java:139)
+	at com.github.tomakehurst.wiremock.WireMockServer.start(WireMockServer.java:189)
+	at com.dvt.loyalty.QuoteVerticleComponentTest.startWireMock(QuoteVerticleComponentTest.java:37)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at io.vertx.junit5.VertxExtension.interceptBeforeEachMethod(VertxExtension.java:148)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptLifecycleMethod(TimeoutExtension.java:126)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptBeforeEachMethod(TimeoutExtension.java:76)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeMethodInExtensionContext(ClassBasedTestDescriptor.java:506)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$synthesizeBeforeEachMethodAdapter$21(ClassBasedTestDescriptor.java:491)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeEachMethods$3(TestMethodTestDescriptor.java:171)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeBeforeMethodsOrCallbacksUntilExceptionOccurs$6(TestMethodTestDescriptor.java:199)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeMethodsOrCallbacksUntilExceptionOccurs(TestMethodTestDescriptor.java:199)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeBeforeEachMethods(TestMethodTestDescriptor.java:168)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:131)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:107)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
+	at org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+Caused by: java.io.IOException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_GB with JaCoCo 0.8.12.202403310830/dbfb6f2.
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_aeaf9ab.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 135 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 69
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:200)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_aeaf9ab.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_aeaf9ab.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 136 more
+]]></system-err>
+  </testcase>
+  <testcase name="validation_rejectsNonPositiveFare_andDoesNotCallUpstreams(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.036">
+    <system-out><![CDATA[2026-01-30T09:28:08.907 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:08.909 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1e9afe4e{/__admin,null,AVAILABLE}
+2026-01-30T09:28:08.909 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:08.909 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1f67d37f{/,null,AVAILABLE}
+2026-01-30T09:28:08.910 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@d0538b3{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50972}
+2026-01-30T09:28:08.910 INFO  [main] org.eclipse.jetty.server.Server - Started Server@4a2f1ae3{STARTING}[11.0.20,sto=1000] @2619ms
+2026-01-30T09:28:08.910 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:08.911 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@77feca04{/__admin,null,AVAILABLE}
+2026-01-30T09:28:08.911 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:08.911 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3b0d9da{/,null,AVAILABLE}
+2026-01-30T09:28:08.912 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@7db63a01{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50973}
+2026-01-30T09:28:08.912 INFO  [main] org.eclipse.jetty.server.Server - Started Server@1eda853f{STARTING}[11.0.20,sto=1000] @2621ms
+Listening on 50974
+2026-01-30T09:28:08.927 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@1eda853f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.928 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@1eda853f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.929 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@7db63a01{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:08.929 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3b0d9da{/,null,STOPPED}
+2026-01-30T09:28:08.930 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@77feca04{/__admin,null,STOPPED}
+2026-01-30T09:28:08.930 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@4a2f1ae3{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.930 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@4a2f1ae3{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.931 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@d0538b3{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:08.931 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@1f67d37f{/,null,STOPPED}
+2026-01-30T09:28:08.931 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@1e9afe4e{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="happyPath_returnsExpectedPoints_andWarning(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.06">
+    <system-out><![CDATA[2026-01-30T09:28:08.942 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:08.943 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5ae6119b{/__admin,null,AVAILABLE}
+2026-01-30T09:28:08.944 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:08.944 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@31b6eec8{/,null,AVAILABLE}
+2026-01-30T09:28:08.944 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@32f8a37b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50976}
+2026-01-30T09:28:08.945 INFO  [main] org.eclipse.jetty.server.Server - Started Server@80081d7{STARTING}[11.0.20,sto=1000] @2654ms
+2026-01-30T09:28:08.945 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:08.946 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7a0eb939{/__admin,null,AVAILABLE}
+2026-01-30T09:28:08.946 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:08.946 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@54a7d1b9{/,null,AVAILABLE}
+2026-01-30T09:28:08.946 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@3dedc8b8{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50977}
+2026-01-30T09:28:08.946 INFO  [main] org.eclipse.jetty.server.Server - Started Server@589a82af{STARTING}[11.0.20,sto=1000] @2656ms
+Listening on 50978
+2026-01-30T09:28:08.989 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@589a82af{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.989 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@589a82af{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.990 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@3dedc8b8{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:08.990 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@54a7d1b9{/,null,STOPPED}
+2026-01-30T09:28:08.990 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7a0eb939{/__admin,null,STOPPED}
+2026-01-30T09:28:08.991 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@80081d7{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.991 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@80081d7{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:08.992 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@32f8a37b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:08.992 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@31b6eec8{/,null,STOPPED}
+2026-01-30T09:28:08.992 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5ae6119b{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="fxFailureAfterRetries_returns502(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.04">
+    <system-out><![CDATA[2026-01-30T09:28:09.003 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.005 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@27f8f1cc{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.005 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.005 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@473c491{/,null,AVAILABLE}
+2026-01-30T09:28:09.005 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@366c9912{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50982}
+2026-01-30T09:28:09.006 INFO  [main] org.eclipse.jetty.server.Server - Started Server@4fa3bebe{STARTING}[11.0.20,sto=1000] @2715ms
+2026-01-30T09:28:09.006 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.009 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6418075c{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.010 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.010 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@f9919a2{/,null,AVAILABLE}
+2026-01-30T09:28:09.010 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@535adf36{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50983}
+2026-01-30T09:28:09.010 INFO  [main] org.eclipse.jetty.server.Server - Started Server@671c71e8{STARTING}[11.0.20,sto=1000] @2720ms
+Listening on 50984
+2026-01-30T09:28:09.031 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@671c71e8{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.031 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@671c71e8{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.032 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@535adf36{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.032 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@f9919a2{/,null,STOPPED}
+2026-01-30T09:28:09.032 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6418075c{/__admin,null,STOPPED}
+2026-01-30T09:28:09.033 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@4fa3bebe{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.033 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@4fa3bebe{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.033 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@366c9912{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.033 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@473c491{/,null,STOPPED}
+2026-01-30T09:28:09.034 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@27f8f1cc{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="fxUnreachable_resultsIn500InternalError(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.027">
+    <system-out><![CDATA[2026-01-30T09:28:09.043 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.045 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@15ab0461{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.045 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.045 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2f403d0a{/,null,AVAILABLE}
+2026-01-30T09:28:09.045 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@686ace1f{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50987}
+2026-01-30T09:28:09.045 INFO  [main] org.eclipse.jetty.server.Server - Started Server@67e37d25{STARTING}[11.0.20,sto=1000] @2755ms
+2026-01-30T09:28:09.045 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.046 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@672549f3{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.046 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.046 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@4791d904{/,null,AVAILABLE}
+2026-01-30T09:28:09.047 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@5924ea91{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50988}
+2026-01-30T09:28:09.047 INFO  [main] org.eclipse.jetty.server.Server - Started Server@569026df{STARTING}[11.0.20,sto=1000] @2756ms
+Listening on 50989
+2026-01-30T09:28:09.059 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@569026df{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.059 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@569026df{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.059 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@5924ea91{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.060 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@4791d904{/,null,STOPPED}
+2026-01-30T09:28:09.060 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@672549f3{/__admin,null,STOPPED}
+2026-01-30T09:28:09.060 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@67e37d25{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.060 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@67e37d25{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.061 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@686ace1f{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.061 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@2f403d0a{/,null,STOPPED}
+2026-01-30T09:28:09.061 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@15ab0461{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="promoUnavailable_fallsBackToZero_andAddsWarning(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.032">
+    <system-out><![CDATA[2026-01-30T09:28:09.071 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.072 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1c2273f6{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.072 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.072 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@411e567e{/,null,AVAILABLE}
+2026-01-30T09:28:09.073 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@35fd03d9{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50993}
+2026-01-30T09:28:09.073 INFO  [main] org.eclipse.jetty.server.Server - Started Server@74eae1e0{STARTING}[11.0.20,sto=1000] @2782ms
+2026-01-30T09:28:09.073 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.074 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7d43c89f{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.074 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.074 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@149ef64a{/,null,AVAILABLE}
+2026-01-30T09:28:09.074 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@462deb2b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50994}
+2026-01-30T09:28:09.074 INFO  [main] org.eclipse.jetty.server.Server - Started Server@7acbd3d0{STARTING}[11.0.20,sto=1000] @2784ms
+Listening on 50995
+2026-01-30T09:28:09.092 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@7acbd3d0{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.092 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@7acbd3d0{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.093 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@462deb2b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.093 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@149ef64a{/,null,STOPPED}
+2026-01-30T09:28:09.093 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7d43c89f{/__admin,null,STOPPED}
+2026-01-30T09:28:09.094 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@74eae1e0{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.094 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@74eae1e0{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.094 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@35fd03d9{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.094 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@411e567e{/,null,STOPPED}
+2026-01-30T09:28:09.095 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@1c2273f6{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="fxRetries_on5xx_thenSucceeds(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.052">
+    <system-out><![CDATA[2026-01-30T09:28:09.105 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.106 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@18bab95b{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.106 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.106 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@70e07ef8{/,null,AVAILABLE}
+2026-01-30T09:28:09.107 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@50f5ce5b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50999}
+2026-01-30T09:28:09.107 INFO  [main] org.eclipse.jetty.server.Server - Started Server@67c1fc9b{STARTING}[11.0.20,sto=1000] @2816ms
+2026-01-30T09:28:09.107 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.108 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@22db12f6{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.108 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.108 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@68e6856c{/,null,AVAILABLE}
+2026-01-30T09:28:09.109 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@2bc21edd{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51000}
+2026-01-30T09:28:09.109 INFO  [main] org.eclipse.jetty.server.Server - Started Server@571b4bf6{STARTING}[11.0.20,sto=1000] @2818ms
+Listening on 51001
+2026-01-30T09:28:09.144 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@571b4bf6{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.144 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@571b4bf6{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.145 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@2bc21edd{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.145 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@68e6856c{/,null,STOPPED}
+2026-01-30T09:28:09.145 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@22db12f6{/__admin,null,STOPPED}
+2026-01-30T09:28:09.146 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@67c1fc9b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.146 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@67c1fc9b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.147 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@50f5ce5b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.147 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@70e07ef8{/,null,STOPPED}
+2026-01-30T09:28:09.147 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@18bab95b{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="invalidJson_returns400(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.028">
+    <system-out><![CDATA[2026-01-30T09:28:09.158 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.159 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2cca7d3c{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.160 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.160 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5e1535e0{/,null,AVAILABLE}
+2026-01-30T09:28:09.160 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@6c96dc5c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51005}
+2026-01-30T09:28:09.160 INFO  [main] org.eclipse.jetty.server.Server - Started Server@5ce7ab6f{STARTING}[11.0.20,sto=1000] @2870ms
+2026-01-30T09:28:09.160 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.162 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@41db6e4b{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.162 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.162 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5367d46f{/,null,AVAILABLE}
+2026-01-30T09:28:09.162 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@752573df{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51006}
+2026-01-30T09:28:09.163 INFO  [main] org.eclipse.jetty.server.Server - Started Server@51a06fd5{STARTING}[11.0.20,sto=1000] @2872ms
+Listening on 51007
+2026-01-30T09:28:09.173 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@51a06fd5{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.173 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@51a06fd5{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.174 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@752573df{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.174 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5367d46f{/,null,STOPPED}
+2026-01-30T09:28:09.174 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@41db6e4b{/__admin,null,STOPPED}
+2026-01-30T09:28:09.174 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@5ce7ab6f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.175 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@5ce7ab6f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.175 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@6c96dc5c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.175 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5e1535e0{/,null,STOPPED}
+2026-01-30T09:28:09.175 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@2cca7d3c{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="requestId_isEchoedWhenProvided(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.031">
+    <system-out><![CDATA[2026-01-30T09:28:09.186 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.188 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5f606ab6{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.188 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.188 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@384cd83a{/,null,AVAILABLE}
+2026-01-30T09:28:09.188 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@747476f1{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51009}
+2026-01-30T09:28:09.188 INFO  [main] org.eclipse.jetty.server.Server - Started Server@3d00c2ae{STARTING}[11.0.20,sto=1000] @2898ms
+2026-01-30T09:28:09.189 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.189 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@307eb95f{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.190 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.190 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7c1f3125{/,null,AVAILABLE}
+2026-01-30T09:28:09.190 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@10b36d8a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51010}
+2026-01-30T09:28:09.190 INFO  [main] org.eclipse.jetty.server.Server - Started Server@6d7005e2{STARTING}[11.0.20,sto=1000] @2899ms
+Listening on 51011
+2026-01-30T09:28:09.205 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@6d7005e2{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.205 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@6d7005e2{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.206 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@10b36d8a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.206 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7c1f3125{/,null,STOPPED}
+2026-01-30T09:28:09.206 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@307eb95f{/__admin,null,STOPPED}
+2026-01-30T09:28:09.207 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@3d00c2ae{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.207 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@3d00c2ae{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.207 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@747476f1{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.208 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@384cd83a{/,null,STOPPED}
+2026-01-30T09:28:09.208 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5f606ab6{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="blankRequestId_isReplacedWithGeneratedId(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.03">
+    <system-out><![CDATA[2026-01-30T09:28:09.218 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.219 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@335cbcbd{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.219 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.219 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@64c79b69{/,null,AVAILABLE}
+2026-01-30T09:28:09.220 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@18a349cb{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51014}
+2026-01-30T09:28:09.220 INFO  [main] org.eclipse.jetty.server.Server - Started Server@6cb5a64d{STARTING}[11.0.20,sto=1000] @2929ms
+2026-01-30T09:28:09.220 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.221 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3c1fd5aa{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.221 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.221 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@4bfaff23{/,null,AVAILABLE}
+2026-01-30T09:28:09.222 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@73ccdfc1{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51015}
+2026-01-30T09:28:09.222 INFO  [main] org.eclipse.jetty.server.Server - Started Server@281a54b{STARTING}[11.0.20,sto=1000] @2931ms
+Listening on 51016
+2026-01-30T09:28:09.237 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@281a54b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.237 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@281a54b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.237 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@73ccdfc1{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.237 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@4bfaff23{/,null,STOPPED}
+2026-01-30T09:28:09.238 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3c1fd5aa{/__admin,null,STOPPED}
+2026-01-30T09:28:09.238 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@6cb5a64d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.238 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@6cb5a64d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.238 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@18a349cb{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.239 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@64c79b69{/,null,STOPPED}
+2026-01-30T09:28:09.239 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@335cbcbd{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="totalPoints_isCappedAt50000(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.027">
+    <system-out><![CDATA[2026-01-30T09:28:09.247 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.248 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7d44e3c7{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.249 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.249 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@47e89fed{/,null,AVAILABLE}
+2026-01-30T09:28:09.249 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@71ae1cb{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51019}
+2026-01-30T09:28:09.249 INFO  [main] org.eclipse.jetty.server.Server - Started Server@5f1eff72{STARTING}[11.0.20,sto=1000] @2958ms
+2026-01-30T09:28:09.249 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.250 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@76ac8c3d{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.250 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.250 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6b5c4b75{/,null,AVAILABLE}
+2026-01-30T09:28:09.250 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@2c40e456{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51020}
+2026-01-30T09:28:09.250 INFO  [main] org.eclipse.jetty.server.Server - Started Server@d4f2f3d{STARTING}[11.0.20,sto=1000] @2960ms
+Listening on 51021
+2026-01-30T09:28:09.265 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@d4f2f3d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.265 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@d4f2f3d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.266 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@2c40e456{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.266 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6b5c4b75{/,null,STOPPED}
+2026-01-30T09:28:09.266 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@76ac8c3d{/__admin,null,STOPPED}
+2026-01-30T09:28:09.266 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@5f1eff72{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.267 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@5f1eff72{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.267 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@71ae1cb{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.267 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@47e89fed{/,null,STOPPED}
+2026-01-30T09:28:09.267 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7d44e3c7{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="validation_rejectsInvalidCurrency(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.021">
+    <system-out><![CDATA[2026-01-30T09:28:09.275 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.276 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@c725dfa{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.276 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.277 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3a8cc099{/,null,AVAILABLE}
+2026-01-30T09:28:09.277 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@16c3388e{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51025}
+2026-01-30T09:28:09.277 INFO  [main] org.eclipse.jetty.server.Server - Started Server@440e2406{STARTING}[11.0.20,sto=1000] @2986ms
+2026-01-30T09:28:09.277 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.278 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@68cc6fa4{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.278 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.278 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@484dde7d{/,null,AVAILABLE}
+2026-01-30T09:28:09.278 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@530aa75c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51026}
+2026-01-30T09:28:09.278 INFO  [main] org.eclipse.jetty.server.Server - Started Server@203ba07{STARTING}[11.0.20,sto=1000] @2988ms
+Listening on 51027
+2026-01-30T09:28:09.288 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@203ba07{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.288 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@203ba07{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.289 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@530aa75c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.289 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@484dde7d{/,null,STOPPED}
+2026-01-30T09:28:09.289 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@68cc6fa4{/__admin,null,STOPPED}
+2026-01-30T09:28:09.289 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@440e2406{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.289 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@440e2406{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.290 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@16c3388e{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.290 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3a8cc099{/,null,STOPPED}
+2026-01-30T09:28:09.290 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@c725dfa{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="promoTimeout_fallsBackToZero_andAddsWarning(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.539">
+    <system-out><![CDATA[2026-01-30T09:28:09.297 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.298 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6919a8a{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.298 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.298 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@23c0fcf0{/,null,AVAILABLE}
+2026-01-30T09:28:09.299 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@49a0fe14{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51029}
+2026-01-30T09:28:09.299 INFO  [main] org.eclipse.jetty.server.Server - Started Server@60f6d689{STARTING}[11.0.20,sto=1000] @3008ms
+2026-01-30T09:28:09.299 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 25.0.2+10-LTS-69
+2026-01-30T09:28:09.299 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@4458887d{/__admin,null,AVAILABLE}
+2026-01-30T09:28:09.300 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:28:09.300 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7b1bb01c{/,null,AVAILABLE}
+2026-01-30T09:28:09.300 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@5dc218e2{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:51030}
+2026-01-30T09:28:09.300 INFO  [main] org.eclipse.jetty.server.Server - Started Server@406cc81b{STARTING}[11.0.20,sto=1000] @3009ms
+Listening on 51031
+2026-01-30T09:28:09.416 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@406cc81b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.416 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@406cc81b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.417 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@5dc218e2{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.417 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7b1bb01c{/,null,STOPPED}
+2026-01-30T09:28:09.417 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@4458887d{/__admin,null,STOPPED}
+2026-01-30T09:28:09.821 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@60f6d689{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.822 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@60f6d689{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:28:09.823 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@49a0fe14{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:28:09.823 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@23c0fcf0{/,null,STOPPED}
+2026-01-30T09:28:09.824 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6919a8a{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+</testsuite>
