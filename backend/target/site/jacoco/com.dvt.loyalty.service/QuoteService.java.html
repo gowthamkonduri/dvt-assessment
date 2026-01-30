@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QuoteService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Loyalty Points Quote Service</a> &gt; <a href="index.source.html" class="el_package">com.dvt.loyalty.service</a> &gt; <span class="el_source">QuoteService.java</span></div><h1>QuoteService.java</h1><pre class="source lang-java linenums">package com.dvt.loyalty.service;
+
+import com.dvt.loyalty.PointsQuoteResponse;
+import com.dvt.loyalty.api.PointsQuoteRequest;
+import com.dvt.loyalty.api.SupportedCurrencies;
+import com.dvt.loyalty.api.Warnings;
+import com.dvt.loyalty.client.FxClient;
+import com.dvt.loyalty.client.PromoClient;
+import com.dvt.loyalty.client.UpstreamException;
+import com.dvt.loyalty.util.Retry;
+import com.dvt.loyalty.util.Time;
+import io.vertx.core.Future;
+
+import java.math.RoundingMode;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Core business logic for calculating loyalty points.
+ * Orchestrates FX conversion, tier bonuses, and promo lookups.
+ */
+public final class QuoteService {
+
+  // Business rule: no one gets more than 50k points per booking
+  private static final int TOTAL_CAP = 50_000;
+
+  private final FxClient fxClient;
+  private final PromoClient promoClient;
+  private final int fxMaxAttempts;
+
+<span class="fc" id="L33">  public QuoteService(FxClient fxClient, PromoClient promoClient, int fxMaxAttempts) {</span>
+<span class="fc" id="L34">    this.fxClient = Objects.requireNonNull(fxClient);</span>
+<span class="fc" id="L35">    this.promoClient = Objects.requireNonNull(promoClient);</span>
+<span class="fc" id="L36">    this.fxMaxAttempts = fxMaxAttempts;</span>
+<span class="fc" id="L37">  }</span>
+
+  /**
+   * Main entry point - validates input, fetches FX rate, applies tier/promo bonuses.
+   * FX call is retried on 5xx errors; promo failures are gracefully handled (we just skip the bonus).
+   */
+  public Future&lt;PointsQuoteResponse&gt; quote(PointsQuoteRequest request) {
+    // Fail fast if the request is garbage
+<span class="fc" id="L45">    var validationErrors = validate(request);</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">    if (!validationErrors.isEmpty()) {</span>
+<span class="fc" id="L47">      return Future.failedFuture(new ValidationException(validationErrors));</span>
+    }
+
+    // FX service can be flaky, so we retry on server errors
+<span class="fc" id="L51">    return Retry.withRetries(</span>
+<span class="fc" id="L52">        () -&gt; fxClient.quote(request.currency(), request.fareAmount()),</span>
+<span class="fc" id="L53">        fxMaxAttempts,</span>
+<span class="fc" id="L54">        QuoteService::isFxRetriable</span>
+      )
+<span class="fc" id="L56">      .compose(fx -&gt; {</span>
+        // Base points = converted amount truncated to int (no rounding up)
+<span class="fc" id="L58">        int basePoints = fx.convertedAmount().setScale(0, RoundingMode.DOWN).intValue();</span>
+<span class="fc" id="L59">        int tierBonus = (int) Math.floor(basePoints * request.customerTier().bonusRate());</span>
+
+<span class="fc" id="L61">        var warnings = new ArrayList&lt;String&gt;();</span>
+
+        // Promo is optional - if missing or service fails, we just give 0 bonus (don't block the quote)
+        Future&lt;Integer&gt; promoBonusFuture;
+<span class="pc bpc" id="L65" title="1 of 4 branches missed.">        if (request.promoCode() == null || request.promoCode().isBlank()) {</span>
+<span class="fc" id="L66">          promoBonusFuture = Future.succeededFuture(0);</span>
+<span class="fc" id="L67">        } else {</span>
+<span class="fc" id="L68">          promoBonusFuture = promoClient.fetch(request.promoCode())</span>
+<span class="fc" id="L69">            .map(promo -&gt; {</span>
+<span class="fc" id="L70">              maybeAddExpiryWarning(promo.expiresAt(), warnings);</span>
+<span class="fc" id="L71">              return Math.max(0, promo.bonusPoints()); // sanity check - no negative bonuses</span>
+            })
+<span class="fc" id="L73">            .recover(err -&gt; {</span>
+              // Promo service down? No worries, just warn the user and move on
+<span class="fc bfc" id="L75" title="All 2 branches covered.">              warnings.add(isTimeout(err) ? Warnings.PROMO_TIMEOUT : Warnings.PROMO_UNAVAILABLE);</span>
+<span class="fc" id="L76">              return Future.succeededFuture(0);</span>
+            });
+        }
+
+<span class="fc" id="L80">        return promoBonusFuture.map(promoBonus -&gt; {</span>
+<span class="fc" id="L81">          int total = basePoints + tierBonus + promoBonus;</span>
+<span class="fc bfc" id="L82" title="All 2 branches covered.">          if (total &gt; TOTAL_CAP) {</span>
+<span class="fc" id="L83">            total = TOTAL_CAP;</span>
+          }
+
+<span class="fc" id="L86">          return new PointsQuoteResponse(</span>
+<span class="fc" id="L87">            basePoints,</span>
+<span class="fc" id="L88">            tierBonus,</span>
+<span class="fc" id="L89">            promoBonus,</span>
+<span class="fc" id="L90">            total,</span>
+<span class="fc" id="L91">            fx.rate(),</span>
+<span class="fc" id="L92">            List.copyOf(warnings)</span>
+          );
+        });
+      });
+  }
+
+  // Only retry on server errors (5xx). Client errors (4xx) mean we sent bad data, no point retrying.
+  private static boolean isFxRetriable(Throwable err) {
+<span class="fc bfc" id="L100" title="All 2 branches covered.">    if (err instanceof UpstreamException ue) {</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">      return ue.status() &gt;= 500;</span>
+    }
+<span class="fc" id="L103">    return true; // network issues etc - worth a retry</span>
+  }
+
+  private static List&lt;String&gt; validate(PointsQuoteRequest request) {
+<span class="fc" id="L107">    var errors = new ArrayList&lt;String&gt;();</span>
+
+<span class="pc bpc" id="L109" title="1 of 2 branches missed.">    if (request == null) {</span>
+<span class="nc" id="L110">      errors.add(&quot;Request body is required&quot;);</span>
+<span class="nc" id="L111">      return errors;</span>
+    }
+
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">    if (request.fareAmount() == null) {</span>
+<span class="nc" id="L115">      errors.add(&quot;fareAmount is required&quot;);</span>
+<span class="pc bfc" id="L116" title="All 2 branches covered.">    } else if (request.fareAmount().signum() &lt;= 0) {</span>
+<span class="fc" id="L117">      errors.add(&quot;fareAmount must be &gt; 0&quot;);</span>
+    }
+
+<span class="pc bpc" id="L120" title="2 of 4 branches missed.">    if (request.currency() == null || request.currency().isBlank()) {</span>
+<span class="nc" id="L121">      errors.add(&quot;currency is required&quot;);</span>
+<span class="pc bfc" id="L122" title="All 2 branches covered.">    } else if (!SupportedCurrencies.VALUES.contains(request.currency())) {</span>
+<span class="fc" id="L123">      errors.add(&quot;currency must be one of &quot; + SupportedCurrencies.VALUES);</span>
+    }
+
+<span class="pc bpc" id="L126" title="1 of 2 branches missed.">    if (request.cabinClass() == null) {</span>
+<span class="nc" id="L127">      errors.add(&quot;cabinClass is required&quot;);</span>
+    }
+
+<span class="pc bpc" id="L130" title="1 of 2 branches missed.">    if (request.customerTier() == null) {</span>
+<span class="nc" id="L131">      errors.add(&quot;customerTier is required&quot;);</span>
+    }
+
+<span class="fc bfc" id="L134" title="All 2 branches covered.">    if (!errors.isEmpty()) {</span>
+<span class="fc" id="L135">      return errors;</span>
+    }
+
+<span class="fc" id="L138">    return List.of();</span>
+  }
+
+  private static void maybeAddExpiryWarning(String expiresAt, List&lt;String&gt; warnings) {
+<span class="pc bpc" id="L142" title="2 of 4 branches missed.">    if (expiresAt == null || expiresAt.isBlank()) {</span>
+<span class="nc" id="L143">      return;</span>
+    }
+    try {
+<span class="fc" id="L146">      Instant expiry = Instant.parse(expiresAt);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">      if (Time.isWithinDays(expiry, Instant.now(), 7)) {</span>
+<span class="fc" id="L148">        warnings.add(Warnings.PROMO_EXPIRES_SOON);</span>
+      }
+<span class="pc" id="L150">    } catch (Exception ignored) {</span>
+      // Ignore bad expiry formats; promo still applies.
+    }
+<span class="fc" id="L153">  }</span>
+
+  private static boolean isTimeout(Throwable err) {
+<span class="fc" id="L156">    String name = err.getClass().getName();</span>
+<span class="pc bpc" id="L157" title="1 of 4 branches missed.">    return name.contains(&quot;Timeout&quot;) || name.contains(&quot;timeout&quot;);</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

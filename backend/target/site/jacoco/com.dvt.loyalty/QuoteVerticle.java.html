@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QuoteVerticle.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Loyalty Points Quote Service</a> &gt; <a href="index.source.html" class="el_package">com.dvt.loyalty</a> &gt; <span class="el_source">QuoteVerticle.java</span></div><h1>QuoteVerticle.java</h1><pre class="source lang-java linenums">package com.dvt.loyalty;
+
+import com.dvt.loyalty.api.ErrorResponse;
+import com.dvt.loyalty.api.PointsQuoteRequest;
+import com.dvt.loyalty.client.FxClient;
+import com.dvt.loyalty.client.PromoClient;
+import com.dvt.loyalty.client.UpstreamException;
+import com.dvt.loyalty.service.QuoteService;
+import com.dvt.loyalty.service.ValidationException;
+import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Promise;
+import io.vertx.core.http.HttpHeaders;
+import io.vertx.core.json.Json;
+import io.vertx.ext.web.Router;
+import io.vertx.ext.web.handler.BodyHandler;
+
+import java.util.UUID;
+
+/**
+ * HTTP layer - sets up the Vert.x server and routes requests to QuoteService.
+ * All the business logic lives in QuoteService; this just handles HTTP stuff.
+ */
+public final class QuoteVerticle extends AbstractVerticle {
+
+  private final int port;
+  private final String fxBaseUrl;
+  private final String promoBaseUrl;
+  private final long fxTimeoutMs;
+  private final long promoTimeoutMs;
+  private final int fxMaxAttempts;
+<span class="fc" id="L31">  private volatile int actualPort = -1;</span>
+
+  // Default constructor reads config from env vars - used when running for real
+  public QuoteVerticle() {
+<span class="nc" id="L35">    this(Integer.parseInt(System.getenv().getOrDefault(&quot;PORT&quot;, &quot;8080&quot;)));</span>
+<span class="nc" id="L36">  }</span>
+
+  // Constructor with just port - still reads other config from env
+  public QuoteVerticle(int port) {
+<span class="nc" id="L40">    this(</span>
+<span class="nc" id="L41">      port,</span>
+<span class="nc" id="L42">      System.getenv().getOrDefault(&quot;FX_BASE_URL&quot;, &quot;http://localhost:8081&quot;),</span>
+<span class="nc" id="L43">      System.getenv().getOrDefault(&quot;PROMO_BASE_URL&quot;, &quot;http://localhost:8082&quot;),</span>
+<span class="nc" id="L44">      Long.parseLong(System.getenv().getOrDefault(&quot;FX_TIMEOUT_MS&quot;, &quot;500&quot;)),</span>
+<span class="nc" id="L45">      Long.parseLong(System.getenv().getOrDefault(&quot;PROMO_TIMEOUT_MS&quot;, &quot;300&quot;)),</span>
+<span class="nc" id="L46">      Integer.parseInt(System.getenv().getOrDefault(&quot;FX_MAX_ATTEMPTS&quot;, &quot;3&quot;))</span>
+    );
+<span class="nc" id="L48">  }</span>
+
+<span class="fc" id="L50">  public QuoteVerticle(</span>
+    int port,
+    String fxBaseUrl,
+    String promoBaseUrl,
+    long fxTimeoutMs,
+    long promoTimeoutMs,
+    int fxMaxAttempts
+  ) {
+<span class="fc" id="L58">    this.port = port;</span>
+<span class="fc" id="L59">    this.fxBaseUrl = fxBaseUrl;</span>
+<span class="fc" id="L60">    this.promoBaseUrl = promoBaseUrl;</span>
+<span class="fc" id="L61">    this.fxTimeoutMs = fxTimeoutMs;</span>
+<span class="fc" id="L62">    this.promoTimeoutMs = promoTimeoutMs;</span>
+<span class="fc" id="L63">    this.fxMaxAttempts = fxMaxAttempts;</span>
+<span class="fc" id="L64">  }</span>
+
+  @Override
+  public void start(Promise&lt;Void&gt; startPromise) {
+<span class="fc" id="L68">    var router = Router.router(vertx);</span>
+
+<span class="fc" id="L70">    var quoteService = new QuoteService(</span>
+<span class="fc" id="L71">      new FxClient(vertx, fxBaseUrl, fxTimeoutMs),</span>
+<span class="fc" id="L72">      new PromoClient(vertx, promoBaseUrl, promoTimeoutMs),</span>
+<span class="fc" id="L73">      fxMaxAttempts</span>
+    );
+
+<span class="fc" id="L76">    router.route().handler(BodyHandler.create());</span>
+
+<span class="fc" id="L78">    router.post(&quot;/v1/points/quote&quot;).handler(ctx -&gt; {</span>
+      // For tracing/debugging - echo back the request ID or generate one
+<span class="fc" id="L80">      String requestId = ctx.request().getHeader(&quot;X-Request-Id&quot;);</span>
+<span class="fc bfc" id="L81" title="All 4 branches covered.">      if (requestId == null || requestId.isBlank()) {</span>
+<span class="fc" id="L82">        requestId = UUID.randomUUID().toString();</span>
+      }
+
+<span class="fc" id="L85">      ctx.response()</span>
+<span class="fc" id="L86">        .putHeader(&quot;X-Request-Id&quot;, requestId)</span>
+<span class="fc" id="L87">        .putHeader(HttpHeaders.CONTENT_TYPE, &quot;application/json&quot;);</span>
+
+      PointsQuoteRequest request;
+      try {
+<span class="fc" id="L91">        request = Json.decodeValue(ctx.body().buffer(), PointsQuoteRequest.class);</span>
+<span class="fc" id="L92">      } catch (Exception e) {</span>
+<span class="fc" id="L93">        ctx.response().setStatusCode(400)</span>
+<span class="fc" id="L94">          .end(Json.encode(new ErrorResponse(&quot;INVALID_JSON&quot;, &quot;Request body must be valid JSON&quot;, java.util.List.of())));</span>
+<span class="fc" id="L95">        return;</span>
+      }
+
+<span class="fc" id="L98">      quoteService.quote(request)</span>
+<span class="fc" id="L99">        .onSuccess(response -&gt; ctx.response().setStatusCode(200).end(Json.encode(response)))</span>
+<span class="fc" id="L100">        .onFailure(err -&gt; {</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">          if (err instanceof ValidationException ve) {</span>
+<span class="fc" id="L102">            ctx.response().setStatusCode(400)</span>
+<span class="fc" id="L103">              .end(Json.encode(new ErrorResponse(&quot;VALIDATION_ERROR&quot;, &quot;Request validation failed&quot;, ve.details())));</span>
+<span class="fc" id="L104">            return;</span>
+          }
+<span class="fc bfc" id="L106" title="All 2 branches covered.">          if (err instanceof UpstreamException ue) {</span>
+<span class="fc" id="L107">            ctx.response().setStatusCode(502)</span>
+<span class="fc" id="L108">              .end(Json.encode(new ErrorResponse(&quot;UPSTREAM_ERROR&quot;, ue.getMessage(), java.util.List.of(ue.upstream()))));</span>
+<span class="fc" id="L109">            return;</span>
+          }
+
+<span class="fc" id="L112">          ctx.response().setStatusCode(500)</span>
+<span class="fc" id="L113">            .end(Json.encode(ErrorResponse.simple(&quot;INTERNAL_ERROR&quot;, &quot;Unexpected error&quot;)));</span>
+<span class="fc" id="L114">        });</span>
+<span class="fc" id="L115">    });</span>
+
+<span class="fc" id="L117">    vertx.createHttpServer()</span>
+<span class="fc" id="L118">      .requestHandler(router)</span>
+<span class="fc" id="L119">      .listen(port)</span>
+<span class="fc" id="L120">      .onSuccess(server -&gt; {</span>
+<span class="fc" id="L121">        actualPort = server.actualPort();</span>
+<span class="fc" id="L122">        System.out.println(&quot;Listening on &quot; + actualPort);</span>
+<span class="fc" id="L123">        startPromise.complete();</span>
+<span class="fc" id="L124">      })</span>
+<span class="fc" id="L125">      .onFailure(err -&gt; {</span>
+<span class="nc" id="L126">        startPromise.fail(err);</span>
+<span class="nc" id="L127">        err.printStackTrace();</span>
+<span class="nc" id="L128">      });</span>
+<span class="fc" id="L129">  }</span>
+
+  public int actualPort() {
+<span class="fc" id="L132">    return actualPort;</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

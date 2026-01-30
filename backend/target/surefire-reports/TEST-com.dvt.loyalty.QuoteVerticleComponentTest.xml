@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.dvt.loyalty.QuoteVerticleComponentTest" time="2.953" tests="13" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/gowthamkonduri/Downloads/dvt assignment/backend/target/test-classes:/Users/gowthamkonduri/Downloads/dvt assignment/backend/target/classes:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web/4.5.10/vertx-web-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-common/4.5.10/vertx-web-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-auth-common/4.5.10/vertx-auth-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-bridge-common/4.5.10/vertx-bridge-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-core/4.5.10/vertx-core-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-client/4.5.10/vertx-web-client-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-uri-template/4.5.10/vertx-uri-template-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-classic/1.5.12/logback-classic-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-core/1.5.12/logback-core-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-junit5/4.5.10/vertx-junit5-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/Users/gowthamkonduri/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/gowthamkonduri/.m2/repository/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar:/Users/gowthamkonduri/.m2/repository/org/wiremock/wiremock/3.9.1/wiremock-3.9.1.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-server/11.0.20/jetty-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-http/11.0.20/jetty-http-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-io/11.0.20/jetty-io-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.20/jetty-servlet-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-security/11.0.20/jetty-security-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlets/11.0.20/jetty-servlets-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-util/11.0.20/jetty-util-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-webapp/11.0.20/jetty-webapp-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-xml/11.0.20/jetty-xml-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-proxy/11.0.20/jetty-proxy-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-client/11.0.20/jetty-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-server/11.0.20/http2-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-common/11.0.20/http2-common-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-hpack/11.0.20/http2-hpack-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-server/11.0.20/jetty-alpn-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-server/11.0.20/jetty-alpn-java-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-client/11.0.20/jetty-alpn-java-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-client/11.0.20/jetty-alpn-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/gowthamkonduri/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.16.1/jackson-datatype-jsr310-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar:/Users/gowthamkonduri/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-legacy/2.10.0/xmlunit-legacy-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-placeholders/2.10.0/xmlunit-placeholders-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/net/javacrumbs/json-unit/json-unit-core/2.40.0/json-unit-core-2.40.0.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/gowthamkonduri/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars/4.3.1/handlebars-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars-helpers/4.3.1/handlebars-helpers-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/commons-fileupload/commons-fileupload/1.5/commons-fileupload-1.5.jar:/Users/gowthamkonduri/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/gowthamkonduri/.m2/repository/com/networknt/json-schema-validator/1.5.0/json-schema-validator-1.5.0.jar:/Users/gowthamkonduri/.m2/repository/com/ethlo/time/itu/1.10.2/itu-1.10.2.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.16.1/jackson-dataformat-yaml-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/yaml/snakeyaml/2.0/snakeyaml-2.0.jar:"/>
+    <property name="java.vm.vendor" value="Microsoft"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://www.microsoft.com"/>
+    <property name="user.timezone" value="Europe/London"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="GB"/>
+    <property name="sun.boot.library.path" value="/Users/gowthamkonduri/.jdk/jdk-21.0.8/jdk-21.0.8+9/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/gowthamkonduri/Downloads/dvt assignment/backend/target/surefire/surefirebooter-20260130091114436_3.jar /Users/gowthamkonduri/Downloads/dvt assignment/backend/target/surefire 2026-01-30T09-11-14_388-jvmRun1 surefire-20260130091114436_1tmp surefire_0-20260130091114436_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/gowthamkonduri/Downloads/dvt assignment/backend/target/test-classes:/Users/gowthamkonduri/Downloads/dvt assignment/backend/target/classes:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web/4.5.10/vertx-web-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-common/4.5.10/vertx-web-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-auth-common/4.5.10/vertx-auth-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-bridge-common/4.5.10/vertx-bridge-common-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-core/4.5.10/vertx-core-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-web-client/4.5.10/vertx-web-client-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-uri-template/4.5.10/vertx-uri-template-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-classic/1.5.12/logback-classic-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/ch/qos/logback/logback-core/1.5.12/logback-core-1.5.12.jar:/Users/gowthamkonduri/.m2/repository/io/vertx/vertx-junit5/4.5.10/vertx-junit5-4.5.10.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.2/junit-jupiter-api-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-commons/1.8.2/junit-platform-commons-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.2/junit-jupiter-params-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.2/junit-jupiter-engine-5.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/platform/junit-platform-engine/1.8.2/junit-platform-engine-1.8.2.jar:/Users/gowthamkonduri/.m2/repository/org/junit/jupiter/junit-jupiter/5.10.3/junit-jupiter-5.10.3.jar:/Users/gowthamkonduri/.m2/repository/org/assertj/assertj-core/3.26.3/assertj-core-3.26.3.jar:/Users/gowthamkonduri/.m2/repository/net/bytebuddy/byte-buddy/1.14.18/byte-buddy-1.14.18.jar:/Users/gowthamkonduri/.m2/repository/org/wiremock/wiremock/3.9.1/wiremock-3.9.1.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-server/11.0.20/jetty-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-http/11.0.20/jetty-http-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-io/11.0.20/jetty-io-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/toolchain/jetty-jakarta-servlet-api/5.0.2/jetty-jakarta-servlet-api-5.0.2.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlet/11.0.20/jetty-servlet-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-security/11.0.20/jetty-security-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-servlets/11.0.20/jetty-servlets-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-util/11.0.20/jetty-util-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-webapp/11.0.20/jetty-webapp-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-xml/11.0.20/jetty-xml-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-proxy/11.0.20/jetty-proxy-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-client/11.0.20/jetty-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-server/11.0.20/http2-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-common/11.0.20/http2-common-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/http2/http2-hpack/11.0.20/http2-hpack-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-server/11.0.20/jetty-alpn-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-server/11.0.20/jetty-alpn-java-server-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-java-client/11.0.20/jetty-alpn-java-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/org/eclipse/jetty/jetty-alpn-client/11.0.20/jetty-alpn-client-11.0.20.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/gowthamkonduri/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/gowthamkonduri/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/gowthamkonduri/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.16.1/jackson-core-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.16.1/jackson-annotations-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.16.1/jackson-databind-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.16.1/jackson-datatype-jsr310-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/client5/httpclient5/5.3.1/httpclient5-5.3.1.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5/5.2.4/httpcore5-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/apache/httpcomponents/core5/httpcore5-h2/5.2.4/httpcore5-h2-5.2.4.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-core/2.10.0/xmlunit-core-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar:/Users/gowthamkonduri/.m2/repository/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-legacy/2.10.0/xmlunit-legacy-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/org/xmlunit/xmlunit-placeholders/2.10.0/xmlunit-placeholders-2.10.0.jar:/Users/gowthamkonduri/.m2/repository/net/javacrumbs/json-unit/json-unit-core/2.40.0/json-unit-core-2.40.0.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest-core/2.2/hamcrest-core-2.2.jar:/Users/gowthamkonduri/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/gowthamkonduri/.m2/repository/com/jayway/jsonpath/json-path/2.9.0/json-path-2.9.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/json-smart/2.5.0/json-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/minidev/accessors-smart/2.5.0/accessors-smart-2.5.0.jar:/Users/gowthamkonduri/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.4/jopt-simple-5.0.4.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars/4.3.1/handlebars-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/com/github/jknack/handlebars-helpers/4.3.1/handlebars-helpers-4.3.1.jar:/Users/gowthamkonduri/.m2/repository/commons-fileupload/commons-fileupload/1.5/commons-fileupload-1.5.jar:/Users/gowthamkonduri/.m2/repository/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar:/Users/gowthamkonduri/.m2/repository/com/networknt/json-schema-validator/1.5.0/json-schema-validator-1.5.0.jar:/Users/gowthamkonduri/.m2/repository/com/ethlo/time/itu/1.10.2/itu-1.10.2.jar:/Users/gowthamkonduri/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.16.1/jackson-dataformat-yaml-2.16.1.jar:/Users/gowthamkonduri/.m2/repository/org/yaml/snakeyaml/2.0/snakeyaml-2.0.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/gowthamkonduri"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="/Users/gowthamkonduri/.jdk/jdk-21.0.8/jdk-21.0.8+9/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/gowthamkonduri/Downloads/dvt assignment/backend"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/gowthamkonduri/Downloads/dvt assignment/backend/target/surefire/surefirebooter-20260130091114436_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="org.eclipse.jetty.http.HttpGenerator.STRICT" value="true"/>
+    <property name="java.runtime.version" value="21.0.8+9-LTS"/>
+    <property name="user.name" value="gowthamkonduri"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="26.2"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Microsoft-11933201"/>
+    <property name="localRepository" value="/Users/gowthamkonduri/.m2/repository"/>
+    <property name="javax.xml.xpath.XPathFactory:http://java.sun.com/jaxp/xpath/dom" value="com.sun.org.apache.xpath.internal.jaxp.XPathFactoryImpl"/>
+    <property name="java.vendor.url.bug" value="https://github.com/microsoft/openjdk/issues"/>
+    <property name="jetty.git.hash" value="922f8dc188f7011e60d0361de585fd4ac4d63064"/>
+    <property name="java.io.tmpdir" value="/var/folders/y8/cj3_j50n1bgdzj77q2cx4btr0000gn/T/"/>
+    <property name="java.version" value="21.0.8"/>
+    <property name="user.dir" value="/Users/gowthamkonduri/Downloads/dvt assignment/backend"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/gowthamkonduri/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Microsoft"/>
+    <property name="java.vm.version" value="21.0.8+9-LTS"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="javax.xml.transform.TransformerFactory" value="com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="fx4xx_isNotRetried_andReturns502(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="2.024">
+    <system-out><![CDATA[2026-01-30T09:11:16.366 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:16.405 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@b5bddfe{/__admin,null,AVAILABLE}
+2026-01-30T09:11:16.412 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:16.412 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1b120d48{/,null,AVAILABLE}
+2026-01-30T09:11:16.424 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@382d549a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50413}
+2026-01-30T09:11:16.429 INFO  [main] org.eclipse.jetty.server.Server - Started Server@7ffc4195{STARTING}[11.0.20,sto=1000] @1941ms
+2026-01-30T09:11:16.429 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:16.430 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5ec06e97{/__admin,null,AVAILABLE}
+2026-01-30T09:11:16.431 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:16.431 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@53c9541c{/,null,AVAILABLE}
+2026-01-30T09:11:16.431 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@8ce3f27{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50414}
+2026-01-30T09:11:16.431 INFO  [main] org.eclipse.jetty.server.Server - Started Server@15d2ea6b{STARTING}[11.0.20,sto=1000] @1944ms
+2026-01-30T09:11:16.588 WARN  [main] io.netty.resolver.dns.DnsServerAddressStreamProviders - Can not find io.netty.resolver.dns.macos.MacOSDnsServerAddressStreamProvider in the classpath, fallback to system defaults. This may result in incorrect DNS resolutions on MacOS. Check whether you have a dependency on 'io.netty:netty-resolver-dns-native-macos'
+Listening on 50415
+2026-01-30T09:11:17.334 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@15d2ea6b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.334 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@15d2ea6b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.340 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@8ce3f27{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.342 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@53c9541c{/,null,STOPPED}
+2026-01-30T09:11:17.342 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5ec06e97{/__admin,null,STOPPED}
+2026-01-30T09:11:17.344 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@7ffc4195{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.344 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@7ffc4195{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.345 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@382d549a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.345 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@1b120d48{/,null,STOPPED}
+2026-01-30T09:11:17.346 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@b5bddfe{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="validation_rejectsNonPositiveFare_andDoesNotCallUpstreams(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.031">
+    <system-out><![CDATA[2026-01-30T09:11:17.366 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.367 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@64864875{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.367 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.367 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@12ae75f1{/,null,AVAILABLE}
+2026-01-30T09:11:17.368 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@c3e5e3c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50418}
+2026-01-30T09:11:17.368 INFO  [main] org.eclipse.jetty.server.Server - Started Server@25bd68ea{STARTING}[11.0.20,sto=1000] @2881ms
+2026-01-30T09:11:17.368 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.369 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@312e8eaf{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.369 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.369 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5c960f64{/,null,AVAILABLE}
+2026-01-30T09:11:17.370 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@615bd28b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50419}
+2026-01-30T09:11:17.370 INFO  [main] org.eclipse.jetty.server.Server - Started Server@568cbf8d{STARTING}[11.0.20,sto=1000] @2882ms
+Listening on 50420
+2026-01-30T09:11:17.383 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@568cbf8d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.383 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@568cbf8d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.384 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@615bd28b{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.385 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5c960f64{/,null,STOPPED}
+2026-01-30T09:11:17.385 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@312e8eaf{/__admin,null,STOPPED}
+2026-01-30T09:11:17.385 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@25bd68ea{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.385 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@25bd68ea{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.386 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@c3e5e3c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.386 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@12ae75f1{/,null,STOPPED}
+2026-01-30T09:11:17.386 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@64864875{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="happyPath_returnsExpectedPoints_andWarning(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.055">
+    <system-out><![CDATA[2026-01-30T09:11:17.397 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.398 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7a4199e5{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.398 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.398 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6fe55fcf{/,null,AVAILABLE}
+2026-01-30T09:11:17.399 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@56897de0{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50422}
+2026-01-30T09:11:17.399 INFO  [main] org.eclipse.jetty.server.Server - Started Server@2b551e7b{STARTING}[11.0.20,sto=1000] @2912ms
+2026-01-30T09:11:17.399 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.400 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@4a9d6eb9{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.400 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.401 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@157a2c86{/,null,AVAILABLE}
+2026-01-30T09:11:17.401 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@4400026{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50423}
+2026-01-30T09:11:17.401 INFO  [main] org.eclipse.jetty.server.Server - Started Server@42c9f2cd{STARTING}[11.0.20,sto=1000] @2914ms
+Listening on 50424
+2026-01-30T09:11:17.439 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@42c9f2cd{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.439 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@42c9f2cd{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.440 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@4400026{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.440 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@157a2c86{/,null,STOPPED}
+2026-01-30T09:11:17.440 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@4a9d6eb9{/__admin,null,STOPPED}
+2026-01-30T09:11:17.441 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@2b551e7b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.441 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@2b551e7b{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.442 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@56897de0{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.442 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6fe55fcf{/,null,STOPPED}
+2026-01-30T09:11:17.442 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7a4199e5{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="fxFailureAfterRetries_returns502(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.038">
+    <system-out><![CDATA[2026-01-30T09:11:17.452 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.454 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6d76aa05{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.454 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.454 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2403c1c5{/,null,AVAILABLE}
+2026-01-30T09:11:17.454 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@314407dd{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50428}
+2026-01-30T09:11:17.455 INFO  [main] org.eclipse.jetty.server.Server - Started Server@1eeb9e5c{STARTING}[11.0.20,sto=1000] @2967ms
+2026-01-30T09:11:17.455 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.456 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@19ea65f4{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.456 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.456 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3dfe2797{/,null,AVAILABLE}
+2026-01-30T09:11:17.456 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@23f27434{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50429}
+2026-01-30T09:11:17.456 INFO  [main] org.eclipse.jetty.server.Server - Started Server@3a70acd5{STARTING}[11.0.20,sto=1000] @2969ms
+Listening on 50430
+2026-01-30T09:11:17.476 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@3a70acd5{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.476 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@3a70acd5{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.477 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@23f27434{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.477 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3dfe2797{/,null,STOPPED}
+2026-01-30T09:11:17.477 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@19ea65f4{/__admin,null,STOPPED}
+2026-01-30T09:11:17.478 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@1eeb9e5c{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.478 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@1eeb9e5c{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.478 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@314407dd{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.479 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@2403c1c5{/,null,STOPPED}
+2026-01-30T09:11:17.479 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6d76aa05{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="fxUnreachable_resultsIn500InternalError(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.028">
+    <system-out><![CDATA[2026-01-30T09:11:17.491 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.493 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@94f79a7{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.493 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.493 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@647d3279{/,null,AVAILABLE}
+2026-01-30T09:11:17.494 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@2c34ce24{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50433}
+2026-01-30T09:11:17.494 INFO  [main] org.eclipse.jetty.server.Server - Started Server@684a34f4{STARTING}[11.0.20,sto=1000] @3007ms
+2026-01-30T09:11:17.494 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.495 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5246453e{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.495 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.495 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@299f9a81{/,null,AVAILABLE}
+2026-01-30T09:11:17.495 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@6c54d0dc{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50434}
+2026-01-30T09:11:17.496 INFO  [main] org.eclipse.jetty.server.Server - Started Server@2643caa6{STARTING}[11.0.20,sto=1000] @3008ms
+Listening on 50435
+2026-01-30T09:11:17.508 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@2643caa6{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.508 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@2643caa6{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.509 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@6c54d0dc{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.509 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@299f9a81{/,null,STOPPED}
+2026-01-30T09:11:17.509 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5246453e{/__admin,null,STOPPED}
+2026-01-30T09:11:17.510 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@684a34f4{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.510 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@684a34f4{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.510 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@2c34ce24{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.510 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@647d3279{/,null,STOPPED}
+2026-01-30T09:11:17.510 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@94f79a7{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="promoUnavailable_fallsBackToZero_andAddsWarning(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.035">
+    <system-out><![CDATA[2026-01-30T09:11:17.520 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.522 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@5fc76532{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.522 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.522 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@2e268c19{/,null,AVAILABLE}
+2026-01-30T09:11:17.522 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@7e2c8622{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50439}
+2026-01-30T09:11:17.522 INFO  [main] org.eclipse.jetty.server.Server - Started Server@331da721{STARTING}[11.0.20,sto=1000] @3035ms
+2026-01-30T09:11:17.522 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.524 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@72f91c91{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.524 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.524 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@69d6fe75{/,null,AVAILABLE}
+2026-01-30T09:11:17.524 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@17a89cb1{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50440}
+2026-01-30T09:11:17.524 INFO  [main] org.eclipse.jetty.server.Server - Started Server@2643c33f{STARTING}[11.0.20,sto=1000] @3037ms
+Listening on 50441
+2026-01-30T09:11:17.543 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@2643c33f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.543 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@2643c33f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.544 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@17a89cb1{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.544 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@69d6fe75{/,null,STOPPED}
+2026-01-30T09:11:17.545 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@72f91c91{/__admin,null,STOPPED}
+2026-01-30T09:11:17.545 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@331da721{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.545 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@331da721{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.546 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@7e2c8622{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.546 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@2e268c19{/,null,STOPPED}
+2026-01-30T09:11:17.546 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@5fc76532{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="fxRetries_on5xx_thenSucceeds(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.047">
+    <system-out><![CDATA[2026-01-30T09:11:17.556 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.557 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@384b718c{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.558 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.558 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@68b4e7b5{/,null,AVAILABLE}
+2026-01-30T09:11:17.558 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@42ceb67f{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50445}
+2026-01-30T09:11:17.558 INFO  [main] org.eclipse.jetty.server.Server - Started Server@308f18c0{STARTING}[11.0.20,sto=1000] @3071ms
+2026-01-30T09:11:17.558 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.560 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@708f238f{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.560 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.560 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@509d999c{/,null,AVAILABLE}
+2026-01-30T09:11:17.560 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@51bd10f0{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50446}
+2026-01-30T09:11:17.561 INFO  [main] org.eclipse.jetty.server.Server - Started Server@396a4dea{STARTING}[11.0.20,sto=1000] @3073ms
+Listening on 50447
+2026-01-30T09:11:17.591 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@396a4dea{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.591 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@396a4dea{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.592 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@51bd10f0{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.592 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@509d999c{/,null,STOPPED}
+2026-01-30T09:11:17.593 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@708f238f{/__admin,null,STOPPED}
+2026-01-30T09:11:17.593 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@308f18c0{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.593 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@308f18c0{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.594 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@42ceb67f{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.594 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@68b4e7b5{/,null,STOPPED}
+2026-01-30T09:11:17.594 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@384b718c{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="invalidJson_returns400(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.03">
+    <system-out><![CDATA[2026-01-30T09:11:17.606 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.607 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6812708d{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.607 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.607 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@7a4c1a6c{/,null,AVAILABLE}
+2026-01-30T09:11:17.608 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@593d0173{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50451}
+2026-01-30T09:11:17.608 INFO  [main] org.eclipse.jetty.server.Server - Started Server@6f749a1f{STARTING}[11.0.20,sto=1000] @3121ms
+2026-01-30T09:11:17.608 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.610 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@dcf64d2{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.610 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.610 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@20bc3e7f{/,null,AVAILABLE}
+2026-01-30T09:11:17.611 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@70199db0{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50452}
+2026-01-30T09:11:17.611 INFO  [main] org.eclipse.jetty.server.Server - Started Server@2afa1b1a{STARTING}[11.0.20,sto=1000] @3123ms
+Listening on 50453
+2026-01-30T09:11:17.622 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@2afa1b1a{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.622 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@2afa1b1a{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.623 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@70199db0{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.623 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@20bc3e7f{/,null,STOPPED}
+2026-01-30T09:11:17.623 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@dcf64d2{/__admin,null,STOPPED}
+2026-01-30T09:11:17.624 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@6f749a1f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.624 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@6f749a1f{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.624 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@593d0173{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.625 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7a4c1a6c{/,null,STOPPED}
+2026-01-30T09:11:17.625 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6812708d{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="requestId_isEchoedWhenProvided(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.031">
+    <system-out><![CDATA[2026-01-30T09:11:17.635 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.637 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1738d3b2{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.637 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.637 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@539953af{/,null,AVAILABLE}
+2026-01-30T09:11:17.637 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@21553c3a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50455}
+2026-01-30T09:11:17.637 INFO  [main] org.eclipse.jetty.server.Server - Started Server@3fb920d9{STARTING}[11.0.20,sto=1000] @3150ms
+2026-01-30T09:11:17.637 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.638 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@645b67d6{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.638 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.639 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@1926806c{/,null,AVAILABLE}
+2026-01-30T09:11:17.639 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@7e584f3c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50456}
+2026-01-30T09:11:17.639 INFO  [main] org.eclipse.jetty.server.Server - Started Server@678c0310{STARTING}[11.0.20,sto=1000] @3152ms
+Listening on 50457
+2026-01-30T09:11:17.655 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@678c0310{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.655 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@678c0310{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.655 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@7e584f3c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.656 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@1926806c{/,null,STOPPED}
+2026-01-30T09:11:17.656 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@645b67d6{/__admin,null,STOPPED}
+2026-01-30T09:11:17.656 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@3fb920d9{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.656 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@3fb920d9{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.657 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@21553c3a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.657 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@539953af{/,null,STOPPED}
+2026-01-30T09:11:17.657 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@1738d3b2{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="blankRequestId_isReplacedWithGeneratedId(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.026">
+    <system-out><![CDATA[2026-01-30T09:11:17.665 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.666 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@a23b96b{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.667 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.667 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@42af2977{/,null,AVAILABLE}
+2026-01-30T09:11:17.667 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@4e6c703a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50460}
+2026-01-30T09:11:17.667 INFO  [main] org.eclipse.jetty.server.Server - Started Server@5dd79a57{STARTING}[11.0.20,sto=1000] @3180ms
+2026-01-30T09:11:17.667 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.668 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@33a0b857{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.668 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.668 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@b3c7c75{/,null,AVAILABLE}
+2026-01-30T09:11:17.668 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@30b5f974{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50461}
+2026-01-30T09:11:17.669 INFO  [main] org.eclipse.jetty.server.Server - Started Server@7bc46dde{STARTING}[11.0.20,sto=1000] @3181ms
+Listening on 50462
+2026-01-30T09:11:17.681 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@7bc46dde{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.682 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@7bc46dde{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.682 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@30b5f974{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.682 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@b3c7c75{/,null,STOPPED}
+2026-01-30T09:11:17.683 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@33a0b857{/__admin,null,STOPPED}
+2026-01-30T09:11:17.683 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@5dd79a57{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.683 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@5dd79a57{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.684 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@4e6c703a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.684 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@42af2977{/,null,STOPPED}
+2026-01-30T09:11:17.684 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@a23b96b{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="totalPoints_isCappedAt50000(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.028">
+    <system-out><![CDATA[2026-01-30T09:11:17.692 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.693 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@4ab1693b{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.694 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.694 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@35e0d91e{/,null,AVAILABLE}
+2026-01-30T09:11:17.694 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@58e0f079{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50465}
+2026-01-30T09:11:17.694 INFO  [main] org.eclipse.jetty.server.Server - Started Server@b7b26c6{STARTING}[11.0.20,sto=1000] @3207ms
+2026-01-30T09:11:17.694 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.695 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@11548363{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.695 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.695 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@6be865c1{/,null,AVAILABLE}
+2026-01-30T09:11:17.695 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@354ed5c4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50466}
+2026-01-30T09:11:17.695 INFO  [main] org.eclipse.jetty.server.Server - Started Server@7320bccc{STARTING}[11.0.20,sto=1000] @3208ms
+Listening on 50467
+2026-01-30T09:11:17.710 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@7320bccc{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.710 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@7320bccc{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.711 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@354ed5c4{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.711 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@6be865c1{/,null,STOPPED}
+2026-01-30T09:11:17.711 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@11548363{/__admin,null,STOPPED}
+2026-01-30T09:11:17.712 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@b7b26c6{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.712 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@b7b26c6{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.712 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@58e0f079{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.712 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@35e0d91e{/,null,STOPPED}
+2026-01-30T09:11:17.713 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@4ab1693b{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="validation_rejectsInvalidCurrency(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.023">
+    <system-out><![CDATA[2026-01-30T09:11:17.723 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.725 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@37351baa{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.725 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.725 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@79de00af{/,null,AVAILABLE}
+2026-01-30T09:11:17.725 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@46c28400{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50471}
+2026-01-30T09:11:17.725 INFO  [main] org.eclipse.jetty.server.Server - Started Server@78907a46{STARTING}[11.0.20,sto=1000] @3238ms
+2026-01-30T09:11:17.725 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.726 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3f563397{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.727 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.727 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@268ee31d{/,null,AVAILABLE}
+2026-01-30T09:11:17.727 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@d319d2c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50472}
+2026-01-30T09:11:17.727 INFO  [main] org.eclipse.jetty.server.Server - Started Server@ef1080d{STARTING}[11.0.20,sto=1000] @3240ms
+Listening on 50473
+2026-01-30T09:11:17.735 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@ef1080d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.735 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@ef1080d{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.735 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@d319d2c{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.735 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@268ee31d{/,null,STOPPED}
+2026-01-30T09:11:17.735 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3f563397{/__admin,null,STOPPED}
+2026-01-30T09:11:17.736 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@78907a46{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.736 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@78907a46{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.736 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@46c28400{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.736 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@79de00af{/,null,STOPPED}
+2026-01-30T09:11:17.736 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@37351baa{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+  <testcase name="promoTimeout_fallsBackToZero_andAddsWarning(Vertx, VertxTestContext)" classname="com.dvt.loyalty.QuoteVerticleComponentTest" time="0.543">
+    <system-out><![CDATA[2026-01-30T09:11:17.745 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.746 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@45ed58b{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.746 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.746 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@465e9090{/,null,AVAILABLE}
+2026-01-30T09:11:17.746 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@258ff54a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50475}
+2026-01-30T09:11:17.746 INFO  [main] org.eclipse.jetty.server.Server - Started Server@f5b81f4{STARTING}[11.0.20,sto=1000] @3259ms
+2026-01-30T09:11:17.746 INFO  [main] org.eclipse.jetty.server.Server - jetty-11.0.20; built: 2024-01-29T21:04:22.394Z; git: 922f8dc188f7011e60d0361de585fd4ac4d63064; jvm 21.0.8+9-LTS
+2026-01-30T09:11:17.747 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3eed0375{/__admin,null,AVAILABLE}
+2026-01-30T09:11:17.747 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler.ROOT - RequestHandlerClass from context returned com.github.tomakehurst.wiremock.http.StubRequestHandler. Normalized mapped under returned 'null'
+2026-01-30T09:11:17.747 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@3793896e{/,null,AVAILABLE}
+2026-01-30T09:11:17.747 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Started NetworkTrafficServerConnector@5e352e3a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:50476}
+2026-01-30T09:11:17.747 INFO  [main] org.eclipse.jetty.server.Server - Started Server@4ad04b05{STARTING}[11.0.20,sto=1000] @3260ms
+Listening on 50477
+2026-01-30T09:11:17.865 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@4ad04b05{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.865 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@4ad04b05{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:17.866 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@5e352e3a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:17.866 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3793896e{/,null,STOPPED}
+2026-01-30T09:11:17.866 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@3eed0375{/__admin,null,STOPPED}
+2026-01-30T09:11:18.271 INFO  [main] org.eclipse.jetty.server.Server - Stopped Server@f5b81f4{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:18.271 INFO  [main] org.eclipse.jetty.server.Server - Shutdown Server@f5b81f4{STOPPING}[11.0.20,sto=1000]
+2026-01-30T09:11:18.273 INFO  [main] org.eclipse.jetty.server.AbstractConnector - Stopped NetworkTrafficServerConnector@258ff54a{HTTP/1.1, (http/1.1, h2c)}{0.0.0.0:0}
+2026-01-30T09:11:18.273 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@465e9090{/,null,STOPPED}
+2026-01-30T09:11:18.273 INFO  [main] org.eclipse.jetty.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@45ed58b{/__admin,null,STOPPED}
+]]></system-out>
+  </testcase>
+</testsuite>

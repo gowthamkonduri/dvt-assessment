@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Android / Gradle
+**/.gradle/
+**/build/
+**/.idea/
+**/*.iml
+local.properties
+
+# SwiftPM
+**/.swiftpm/
+**/.build/
+
+# Xcode
+**/DerivedData/
