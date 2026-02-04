@@ -10,23 +10,40 @@ public final class LoginViewModel: ObservableObject {
   private let authService: AuthServicing
   private let networkMonitor: NetworkMonitoring
   private let tokenStore: TokenStoring
+  private let analytics: AnalyticsTracking?
 
   public init(
     authService: AuthServicing,
     networkMonitor: NetworkMonitoring,
-    tokenStore: TokenStoring
+    tokenStore: TokenStoring,
+    analytics: AnalyticsTracking? = nil
   ) {
     self.authService = authService
     self.networkMonitor = networkMonitor
     self.tokenStore = tokenStore
+    self.analytics = analytics
 
     self.state = LoginState()
     self.isLoggedIn = false
     self.state.isOnline = networkMonitor.isOnline
+  }
 
-    // Check if we have a saved token (remember me from last session)
-    Task {
-      self.isLoggedIn = (await tokenStore.readToken()) != nil
+  /// Point 13: Validate stored token with backend on app launch.
+  public func checkStoredToken() async {
+    guard let token = await tokenStore.readToken() else {
+      isLoggedIn = false
+      return
+    }
+
+    do {
+      let isValid = try await authService.validateToken(token)
+      isLoggedIn = isValid
+      if !isValid {
+        await tokenStore.clearToken()
+      }
+    } catch {
+      isLoggedIn = false
+      await tokenStore.clearToken()
     }
   }
 
@@ -45,11 +62,19 @@ public final class LoginViewModel: ObservableObject {
   }
 
   public func loginTapped() async {
-    // refresh online snapshot
+    // Point 12: Prevent concurrent login attempts
+    guard !state.isLoading else { return }
+
+    // Refresh online snapshot
     state.isOnline = networkMonitor.isOnline
 
-    if state.email.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || state.password.count < 6 {
-      state.errorMessage = "Please enter a valid email and password"
+    // Point 10: Sanitize inputs before validation
+    let sanitizedEmail = state.email.trimmingCharacters(in: .whitespacesAndNewlines)
+    let sanitizedPassword = state.password.trimmingCharacters(in: .whitespacesAndNewlines)
+
+    // Check input validity first (email format, password strength)
+    if !state.hasValidInput {
+      state.errorMessage = "Please enter a valid email and password (min 8 chars, uppercase, lowercase, number)"
       return
     }
 
@@ -65,9 +90,10 @@ public final class LoginViewModel: ObservableObject {
 
     state.isLoading = true
     state.errorMessage = nil
+    analytics?.trackEvent("login_attempted", parameters: nil)
 
     do {
-      let token = try await authService.login(email: state.email, password: state.password)
+      let token = try await authService.login(email: sanitizedEmail, password: sanitizedPassword)
 
       if state.rememberMe {
         await tokenStore.saveToken(token)
@@ -77,14 +103,25 @@ public final class LoginViewModel: ObservableObject {
 
       state.isLoading = false
       state.failureCount = 0
-      state.isLockedOut = false
+      state.lockoutExpiry = nil
       isLoggedIn = true
+      analytics?.trackEvent("login_success", parameters: nil)
     } catch {
-      // Track failures - lock them out after 3 bad attempts
       state.isLoading = false
       state.failureCount += 1
-      state.isLockedOut = state.failureCount >= 3
-      state.errorMessage = state.isLockedOut ? "Locked out after 3 failures" : "Invalid credentials"
+      analytics?.trackEvent("login_failed", parameters: ["error": error.localizedDescription])
+
+      if state.failureCount >= 3 {
+        state.lockoutExpiry = Date().addingTimeInterval(300)
+        state.errorMessage = "Too many failed attempts. Try again in 5 minutes."
+      } else {
+        // Point 7: Provide specific error from AuthError
+        if let authError = error as? AuthError {
+          state.errorMessage = authError.message
+        } else {
+          state.errorMessage = "Login failed. Please try again."
+        }
+      }
     }
   }
 
