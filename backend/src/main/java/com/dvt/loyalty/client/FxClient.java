@@ -13,8 +13,13 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
- * HTTP client for the FX rate service.
- * Returns failed Future with UpstreamException on non-2xx responses.
+ * HTTP client for the Foreign Exchange (FX) rate service.
+ *
+ * Converts fare amounts from various currencies to AED using real-time exchange rates.
+ * Uses connection pooling with keep-alive. Thread-safe.
+ *
+ * @see FxQuoteResponse
+ * @see UpstreamException
  */
 public final class FxClient implements AutoCloseable {
 
@@ -24,6 +29,13 @@ public final class FxClient implements AutoCloseable {
   private final String baseUrl;
   private final long timeoutMs;
 
+  /**
+   * Creates a new FxClient.
+   *
+   * @param vertx     the Vert.x instance
+   * @param baseUrl   base URL of the FX service
+   * @param timeoutMs request timeout in milliseconds
+   */
   public FxClient(Vertx vertx, String baseUrl, long timeoutMs) {
     WebClientOptions options = new WebClientOptions()
       .setMaxPoolSize(10)
@@ -36,6 +48,7 @@ public final class FxClient implements AutoCloseable {
     log.debug("FxClient initialized with baseUrl={}, timeoutMs={}, poolSize={}", baseUrl, timeoutMs, options.getMaxPoolSize());
   }
 
+  /** Closes the underlying HTTP client. */
   @Override
   public void close() {
     if (webClient != null) {
@@ -44,7 +57,14 @@ public final class FxClient implements AutoCloseable {
     }
   }
 
-  /** Fetches the exchange rate for a currency/amount. */
+  /**
+   * Fetches the exchange rate and converts an amount to AED.
+   *
+   * @param currency the source currency code (e.g., "USD", "EUR", "GBP")
+   * @param amount   the amount to convert
+   * @return a Future containing the converted amount and exchange rate
+   * @throws UpstreamException if the FX service returns non-200 or invalid response
+   */
   public Future<FxQuoteResponse> quote(String currency, BigDecimal amount) {
     String url = baseUrl + "/fx/quote";
     log.debug("Requesting FX quote: currency={}, amount={}", currency, amount);

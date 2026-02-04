@@ -21,8 +21,22 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Core business logic for calculating loyalty points.
- * FX is retried on 5xx; promo failures degrade gracefully.
+ * Core business logic for calculating loyalty points from fare purchases.
+ *
+ * This service orchestrates calls to external FX and Promo services to compute
+ * the final points breakdown. It implements the following resilience patterns:
+ *
+ * - Retry with backoff: FX service calls are retried on 5xx errors
+ * - Graceful degradation: Promo service failures return 0 bonus (not an error)
+ * - Fail-fast validation: Invalid requests are rejected before external calls
+ * - Points cap: Total points are capped at {@link BusinessRules#TOTAL_POINTS_CAP}
+ *
+ * Thread Safety: This class is thread-safe and can be shared across multiple
+ * request handlers.
+ *
+ * @see PointsQuoteRequest
+ * @see PointsQuoteResponse
+ * @see ValidationException
  */
 public final class QuoteService {
 
@@ -32,6 +46,13 @@ public final class QuoteService {
   private final PromoClient promoClient;
   private final int fxMaxAttempts;
 
+  /**
+   * Creates a new QuoteService.
+   *
+   * @param fxClient      client for FX rate conversions
+   * @param promoClient   client for promo code lookups
+   * @param fxMaxAttempts max retry attempts for FX service (>= 1)
+   */
   public QuoteService(FxClient fxClient, PromoClient promoClient, int fxMaxAttempts) {
     this.fxClient = Objects.requireNonNull(fxClient, "fxClient is required");
     this.promoClient = Objects.requireNonNull(promoClient, "promoClient is required");
@@ -40,7 +61,28 @@ public final class QuoteService {
 
   /**
    * Calculates loyalty points for a fare purchase.
-   * Returns failed future with ValidationException if input is invalid.
+   *
+   * Steps:
+   * 1. Validates the request (fare amount, currency, cabin class, tier)
+   * 2. Converts the fare to AED using the FX service
+   * 3. Calculates base points (1 point per AED, truncated)
+   * 4. Applies tier bonus percentage based on customer tier
+   * 5. Optionally fetches promo bonus (gracefully degrades on failure)
+   * 6. Caps total points at {@link BusinessRules#TOTAL_POINTS_CAP}
+   *
+   * Error Handling:
+   * - {@link ValidationException} - Request validation failed (invalid input)
+   * - {@link UpstreamException} - FX service unavailable after retries
+   *
+   * Warnings: The response may include:
+   * - PROMO_EXPIRES_SOON: Promo code expires within 7 days
+   * - PROMO_TIMEOUT: Promo service timed out (bonus set to 0)
+   * - PROMO_UNAVAILABLE: Promo service returned an error (bonus set to 0)
+   *
+   * @param request the quote request containing fare details and customer information
+   * @return a {@link Future} containing the points breakdown, FX rate, and any warnings
+   * @throws ValidationException if request validation fails (returned as failed Future)
+   * @throws UpstreamException if FX service is unavailable after all retry attempts
    */
   public Future<PointsQuoteResponse> quote(PointsQuoteRequest request) {
     // Fail fast if the request is garbage

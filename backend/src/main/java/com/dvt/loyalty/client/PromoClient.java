@@ -12,8 +12,13 @@ import org.slf4j.LoggerFactory;
 import java.util.Objects;
 
 /**
- * HTTP client for the promo service.
- * Uses short timeout since promo is optional - failures return empty result.
+ * HTTP client for the Promotional Code service.
+ *
+ * Fetches bonus points for promotional codes. Promo is optional - failures are
+ * handled gracefully by awarding 0 bonus points with a warning. Thread-safe.
+ *
+ * @see PromoResponse
+ * @see UpstreamException
  */
 public final class PromoClient implements AutoCloseable {
 
@@ -23,6 +28,13 @@ public final class PromoClient implements AutoCloseable {
   private final String baseUrl;
   private final long timeoutMs;
 
+  /**
+   * Creates a new PromoClient.
+   *
+   * @param vertx     the Vert.x instance
+   * @param baseUrl   base URL of the promo service
+   * @param timeoutMs request timeout in milliseconds
+   */
   public PromoClient(Vertx vertx, String baseUrl, long timeoutMs) {
     WebClientOptions options = new WebClientOptions()
       .setMaxPoolSize(10)
@@ -35,6 +47,7 @@ public final class PromoClient implements AutoCloseable {
     log.debug("PromoClient initialized with baseUrl={}, timeoutMs={}, poolSize={}", baseUrl, timeoutMs, options.getMaxPoolSize());
   }
 
+  /** Closes the underlying HTTP client. */
   @Override
   public void close() {
     if (webClient != null) {
@@ -43,7 +56,13 @@ public final class PromoClient implements AutoCloseable {
     }
   }
 
-  /** Fetches bonus points for a promo code. */
+  /**
+   * Fetches bonus points and expiry information for a promotional code.
+   *
+   * @param promoCode the promotional code to look up (e.g., "SUMMER25")
+   * @return a Future containing the bonus points and expiry date
+   * @throws UpstreamException if the promo service returns non-200 or invalid response
+   */
   public Future<PromoResponse> fetch(String promoCode) {
     String url = baseUrl + "/promo/" + promoCode;
     log.debug("Fetching promo: code={}", promoCode);
