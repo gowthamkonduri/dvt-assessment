@@ -10,7 +10,7 @@ public protocol AuthServicing {
   func validateToken(_ token: String) async throws -> Bool
 }
 
-/// Point 16: Analytics tracking protocol for login events.
+/// Analytics tracking protocol for monitoring login events and user behavior.
 public protocol AnalyticsTracking {
   func trackEvent(_ name: String, parameters: [String: Any]?)
 }

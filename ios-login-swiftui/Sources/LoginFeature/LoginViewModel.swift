@@ -28,7 +28,7 @@ public final class LoginViewModel: ObservableObject {
     self.state.isOnline = networkMonitor.isOnline
   }
 
-  /// Point 13: Validate stored token with backend on app launch.
+  /// Validates stored token with backend on app launch to restore session.
   public func checkStoredToken() async {
     guard let token = await tokenStore.readToken() else {
       isLoggedIn = false
@@ -62,13 +62,13 @@ public final class LoginViewModel: ObservableObject {
   }
 
   public func loginTapped() async {
-    // Point 12: Prevent concurrent login attempts
+    // Prevent concurrent login attempts while request is in flight
     guard !state.isLoading else { return }
 
     // Refresh online snapshot
     state.isOnline = networkMonitor.isOnline
 
-    // Point 10: Sanitize inputs before validation
+    // Sanitize inputs before validation to prevent whitespace-only entries
     let sanitizedEmail = state.email.trimmingCharacters(in: .whitespacesAndNewlines)
     let sanitizedPassword = state.password.trimmingCharacters(in: .whitespacesAndNewlines)
 
@@ -115,7 +115,7 @@ public final class LoginViewModel: ObservableObject {
         state.lockoutExpiry = Date().addingTimeInterval(300)
         state.errorMessage = "Too many failed attempts. Try again in 5 minutes."
       } else {
-        // Point 7: Provide specific error from AuthError
+        // Provide specific error message from AuthError when available
         if let authError = error as? AuthError {
           state.errorMessage = authError.message
         } else {

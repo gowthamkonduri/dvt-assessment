@@ -14,16 +14,20 @@ data class LoginUiState(
   val isLoading: Boolean = false,
 
   val failureCount: Int = 0,
-  val isLockedOut: Boolean = false,
+  val lockoutExpiryTime: Long? = null, // timestamp in millis for time-based lockout
 
   val errorMessage: String? = null,
 ) {
+  // Lockout expires automatically after the time passes
+  val isLockedOut: Boolean
+    get() = lockoutExpiryTime?.let { it > System.currentTimeMillis() } ?: false
+
   // Button only enabled when we're ready to actually attempt login
   val isLoginEnabled: Boolean
     get() =
       !isLoading &&
         !isLockedOut &&
         isOnline &&
-        email.isNotBlank() &&
+        EmailValidator.isValid(email) &&
         password.length >= 6
 }

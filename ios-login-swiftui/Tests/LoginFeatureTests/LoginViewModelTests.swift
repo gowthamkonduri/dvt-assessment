@@ -182,7 +182,7 @@ private final class SpyAuthService: AuthServicing {
   }
 }
 
-// MARK: - Point 14: Additional Tests
+// MARK: - Extended Validation Tests
 
 final class LoginViewModelAdditionalTests: XCTestCase {
 
