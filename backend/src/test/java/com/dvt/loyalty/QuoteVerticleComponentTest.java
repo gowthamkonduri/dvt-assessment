@@ -19,7 +19,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -404,5 +408,265 @@ class QuoteVerticleComponentTest {
       return List.of();
     }
     return arr.stream().map(String::valueOf).toList();
+  }
+
+  // ==================== Integration Tests: Concurrent Requests ====================
+
+  @Test
+  void shouldHandleConcurrentRequests(Vertx vertx, VertxTestContext tc) {
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":100.00,\"rate\":1.0}")));
+
+    int concurrentRequests = 10;
+    var successCount = new AtomicInteger(0);
+    var failureCount = new AtomicInteger(0);
+    var latch = new CountDownLatch(concurrentRequests);
+
+    deployApp(vertx, 500, 300, 3)
+      .onSuccess(port -> {
+        for (int i = 0; i < concurrentRequests; i++) {
+          sendQuoteRequest(vertx, port, requestBody(100.00, "USD", "ECONOMY", "NONE", null), "req-" + i)
+            .onComplete(ar -> {
+              if (ar.succeeded() && ar.result().statusCode() == 200) {
+                successCount.incrementAndGet();
+              } else {
+                failureCount.incrementAndGet();
+              }
+              latch.countDown();
+            });
+        }
+
+        // Wait for all requests to complete
+        vertx.setTimer(5000, timerId -> tc.verify(() -> {
+          assertThat(successCount.get()).isEqualTo(concurrentRequests);
+          assertThat(failureCount.get()).isEqualTo(0);
+          fx.verify(concurrentRequests, getRequestedFor(urlPathEqualTo("/fx/quote")));
+          tc.completeNow();
+        }));
+      })
+      .onFailure(tc::failNow);
+  }
+
+  // ==================== Boundary Tests: Large Fare Amounts ====================
+
+  @Test
+  void shouldHandleVeryLargeFareAmounts(Vertx vertx, VertxTestContext tc) {
+    // Test with maximum allowed fare amount (1,000,000)
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":1000000.00,\"rate\":1.0}")));
+
+    deployApp(vertx, 500, 300, 3)
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(1000000.00, "USD", "ECONOMY", "PLATINUM", null), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        assertThat(resp.statusCode()).isEqualTo(200);
+        var json = resp.bodyAsJsonObject();
+        // Even with 1M fare + tier bonus, should be capped at 50,000
+        assertThat(json.getInteger("totalPoints")).isEqualTo(50_000);
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
+  }
+
+  @Test
+  void shouldRejectFareAmountExceedingMaximum(Vertx vertx, VertxTestContext tc) {
+    // Fare amount exceeds maximum allowed (1,000,000)
+    deployApp(vertx, 500, 300, 3)
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(1000001.00, "USD", "ECONOMY", "NONE", null), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        assertThat(resp.statusCode()).isEqualTo(400);
+        var json = resp.bodyAsJsonObject();
+        assertThat(json.getString("code")).isEqualTo("VALIDATION_ERROR");
+        assertThat(json.getJsonArray("details").getString(0)).contains("must not exceed");
+        // Ensure no upstream calls were made
+        fx.verify(0, getRequestedFor(urlPathEqualTo("/fx/quote")));
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
+  }
+
+  // ==================== Boundary Tests: Negative Bonus Points ====================
+
+  @Test
+  void shouldRejectNegativeBonusPoints(Vertx vertx, VertxTestContext tc) {
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":100.00,\"rate\":1.0}")));
+
+    // Promo service returns negative bonus points (malicious or buggy response)
+    promo.stubFor(get(urlEqualTo("/promo/BADPROMO"))
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"bonusPoints\":-500,\"expiresAt\":\"" + Instant.now().plus(30, ChronoUnit.DAYS).toString() + "\"}")));
+
+    deployApp(vertx, 500, 300, 3)
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(100.00, "USD", "ECONOMY", "NONE", "BADPROMO"), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        assertThat(resp.statusCode()).isEqualTo(200);
+        var json = resp.bodyAsJsonObject();
+        // Negative bonus should be sanitized to 0 (defensive coding)
+        assertThat(json.getInteger("promoBonus")).isGreaterThanOrEqualTo(0);
+        // Total should not be reduced by negative bonus
+        assertThat(json.getInteger("totalPoints")).isGreaterThanOrEqualTo(json.getInteger("basePoints"));
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
+  }
+
+  // ==================== Resilience Tests: Circuit Breaker Scenarios ====================
+
+  @Test
+  void shouldHandleCircuitBreakerScenarios_consecutiveFailures(Vertx vertx, VertxTestContext tc) {
+    // FX service returns 500 errors consistently (simulates service outage)
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .willReturn(aResponse().withStatus(500)));
+
+    var failureResponses = new ArrayList<Integer>();
+    int numRequests = 3;
+    var latch = new CountDownLatch(numRequests);
+
+    deployApp(vertx, 200, 100, 2) // Only 2 retry attempts
+      .onSuccess(port -> {
+        for (int i = 0; i < numRequests; i++) {
+          sendQuoteRequest(vertx, port, requestBody(100.00, "USD", "ECONOMY", "NONE", null), "circuit-" + i)
+            .onComplete(ar -> {
+              if (ar.succeeded()) {
+                failureResponses.add(ar.result().statusCode());
+              }
+              latch.countDown();
+            });
+        }
+
+        vertx.setTimer(3000, timerId -> tc.verify(() -> {
+          // All requests should fail with 502 (upstream error)
+          assertThat(failureResponses).hasSize(numRequests);
+          assertThat(failureResponses).allMatch(status -> status == 502);
+          // Each request should have tried 2 times (maxAttempts = 2)
+          fx.verify(numRequests * 2, getRequestedFor(urlPathEqualTo("/fx/quote")));
+          tc.completeNow();
+        }));
+      })
+      .onFailure(tc::failNow);
+  }
+
+  @Test
+  void shouldHandleIntermittentFailures_partialSuccess(Vertx vertx, VertxTestContext tc) {
+    // First request fails, second succeeds (simulates flaky service)
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .inScenario("intermittent")
+      .whenScenarioStateIs(Scenario.STARTED)
+      .willReturn(aResponse().withStatus(503))
+      .willSetStateTo("recovered"));
+
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .inScenario("intermittent")
+      .whenScenarioStateIs("recovered")
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":100.00,\"rate\":1.0}")));
+
+    deployApp(vertx, 500, 300, 3)
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(100.00, "USD", "ECONOMY", "NONE", null), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        // Should succeed after retry
+        assertThat(resp.statusCode()).isEqualTo(200);
+        // Should have made 2 calls (1 failure + 1 success)
+        fx.verify(2, getRequestedFor(urlPathEqualTo("/fx/quote")));
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
+  }
+
+  // ==================== Performance Tests: Timeout Scenarios ====================
+
+  @Test
+  void shouldHandleFxTimeout_withinConfiguredLimit(Vertx vertx, VertxTestContext tc) {
+    // FX service responds slowly but within timeout
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .willReturn(aResponse()
+        .withFixedDelay(200) // 200ms delay
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":100.00,\"rate\":1.0}")));
+
+    deployApp(vertx, 500, 300, 1) // 500ms timeout, should succeed
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(100.00, "USD", "ECONOMY", "NONE", null), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        assertThat(resp.statusCode()).isEqualTo(200);
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
+  }
+
+  @Test
+  void shouldHandleFxTimeout_exceedsConfiguredLimit(Vertx vertx, VertxTestContext tc) {
+    // FX service responds slower than timeout allows
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .willReturn(aResponse()
+        .withFixedDelay(300) // 300ms delay
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":100.00,\"rate\":1.0}")));
+
+    deployApp(vertx, 100, 100, 2) // Only 100ms timeout - will timeout
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(100.00, "USD", "ECONOMY", "NONE", null), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        // Should fail due to timeout after retries
+        assertThat(resp.statusCode()).isIn(500, 502);
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
+  }
+
+  // ==================== Contract Tests: External Service Integration ====================
+
+  @Test
+  void fxService_contractTest_validRequest(Vertx vertx, VertxTestContext tc) {
+    // Verify the contract: FX service is called with correct query parameters
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .withQueryParam("currency", equalTo("EUR"))
+      .withQueryParam("amount", matching("250\\.5.*"))
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":918.33,\"rate\":3.67}")));
+
+    deployApp(vertx, 500, 300, 1)
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(250.50, "EUR", "BUSINESS", "GOLD", null), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        assertThat(resp.statusCode()).isEqualTo(200);
+        // Verify contract: FX service was called with correct currency
+        fx.verify(1, getRequestedFor(urlPathEqualTo("/fx/quote"))
+          .withQueryParam("currency", equalTo("EUR")));
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
+  }
+
+  @Test
+  void promoService_contractTest_validRequest(Vertx vertx, VertxTestContext tc) {
+    fx.stubFor(get(urlPathEqualTo("/fx/quote"))
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"convertedAmount\":100.00,\"rate\":1.0}")));
+
+    // Verify the contract: Promo service is called with correct path
+    promo.stubFor(get(urlEqualTo("/promo/WINTER2026"))
+      .willReturn(aResponse()
+        .withHeader("Content-Type", "application/json")
+        .withBody("{\"bonusPoints\":150,\"expiresAt\":\"" + Instant.now().plus(30, ChronoUnit.DAYS).toString() + "\"}")));
+
+    deployApp(vertx, 500, 300, 1)
+      .compose(port -> sendQuoteRequest(vertx, port, requestBody(100.00, "USD", "ECONOMY", "NONE", "WINTER2026"), null))
+      .onSuccess(resp -> tc.verify(() -> {
+        assertThat(resp.statusCode()).isEqualTo(200);
+        var json = resp.bodyAsJsonObject();
+        assertThat(json.getInteger("promoBonus")).isEqualTo(150);
+        // Verify contract: Promo service was called with exact path
+        promo.verify(1, getRequestedFor(urlEqualTo("/promo/WINTER2026")));
+        tc.completeNow();
+      }))
+      .onFailure(tc::failNow);
   }
 }

@@ -1,5 +1,6 @@
 package com.dvt.mobilelogin
 
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -27,12 +28,15 @@ class InMemoryTokenStore : TokenStore {
 }
 
 /**
- * Minimal fake repo for manual app usage.
- * Unit tests use MockK instead.
+ * FOR DEBUG/TESTING ONLY - use BuildConfig.DEBUG to conditionally include.
+ * Valid credentials: user@example.com / Password1
  */
 class FakeAuthRepository(private val tokenStore: TokenStore) : AuthRepository {
   override suspend fun login(email: String, password: String): String {
-    if (email == "user@example.com" && password == "password") {
+    // Simulate network delay
+    delay(500)
+
+    if (email == "user@example.com" && password == "Password1") {
       return "token-abc"
     }
     throw AuthException("Invalid credentials")

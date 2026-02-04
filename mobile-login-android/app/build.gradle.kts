@@ -1,6 +1,8 @@
 plugins {
-  id("com.android.application")
-  id("org.jetbrains.kotlin.android")
+  alias(libs.plugins.android.application)
+  alias(libs.plugins.kotlin.android)
+  alias(libs.plugins.hilt.android)
+  alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -9,16 +11,30 @@ kotlin {
 
 android {
   namespace = "com.dvt.mobilelogin"
-  compileSdk = 35
+  compileSdk = libs.versions.compileSdk.get().toInt()
 
   defaultConfig {
     applicationId = "com.dvt.mobilelogin"
-    minSdk = 24
-    targetSdk = 35
+    minSdk = libs.versions.minSdk.get().toInt()
+    targetSdk = libs.versions.targetSdk.get().toInt()
     versionCode = 1
     versionName = "1.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      isMinifyEnabled = true
+      isShrinkResources = true
+      proguardFiles(
+        getDefaultProguardFile("proguard-android-optimize.txt"),
+        "proguard-rules.pro"
+      )
+    }
+    debug {
+      isMinifyEnabled = false
+    }
   }
 
   buildFeatures {
@@ -31,7 +47,7 @@ android {
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.5.14"
+    kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
   }
 
   kotlinOptions {
@@ -52,33 +68,45 @@ android {
 }
 
 dependencies {
-  implementation("androidx.core:core-ktx:1.13.1")
-  implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
-  implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
-  implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+  // AndroidX Core
+  implementation(libs.androidx.core.ktx)
+  implementation(libs.androidx.lifecycle.runtime.ktx)
+  implementation(libs.androidx.lifecycle.viewmodel.ktx)
+  implementation(libs.kotlinx.coroutines.android)
+
+  // Security - encrypted shared preferences
+  implementation(libs.androidx.security.crypto)
+
+  // DataStore - async preferences storage (non-blocking)
+  implementation(libs.androidx.datastore.preferences)
 
   // Compose
-  implementation(platform("androidx.compose:compose-bom:2024.10.00"))
-  implementation("androidx.compose.ui:ui")
-  implementation("androidx.compose.material3:material3")
-  implementation("androidx.compose.ui:ui-tooling-preview")
-  debugImplementation("androidx.compose.ui:ui-tooling")
+  implementation(platform(libs.compose.bom))
+  implementation(libs.compose.ui)
+  implementation(libs.compose.material3)
+  implementation(libs.compose.ui.tooling.preview)
+  debugImplementation(libs.compose.ui.tooling)
 
-  // Navigation (optional; we only emit events from VM)
-  implementation("androidx.activity:activity-compose:1.9.3")
+  // Navigation
+  implementation(libs.androidx.activity.compose)
+
+  // Hilt - Dependency Injection
+  implementation(libs.hilt.android)
+  ksp(libs.hilt.compiler)
+  implementation(libs.hilt.navigation.compose)
 
   // Unit testing
-  testImplementation("junit:junit:4.13.2")
+  testImplementation(libs.junit)
   testImplementation(kotlin("test"))
-  testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.9.0")
-  testImplementation("app.cash.turbine:turbine:1.1.0")
-  testImplementation("io.mockk:mockk:1.13.13")
+  testImplementation(libs.kotlinx.coroutines.test)
+  testImplementation(libs.turbine)
+  testImplementation(libs.mockk)
 
   // Android / Compose UI tests
-  androidTestImplementation(platform("androidx.compose:compose-bom:2024.10.00"))
-  androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-  debugImplementation("androidx.compose.ui:ui-test-manifest")
+  androidTestImplementation(platform(libs.compose.bom))
+  androidTestImplementation(libs.compose.ui.test.junit4)
+  debugImplementation(libs.compose.ui.test.manifest)
 
-  androidTestImplementation("androidx.test.ext:junit:1.2.1")
-  androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+  androidTestImplementation(libs.androidx.test.junit)
+  androidTestImplementation(libs.androidx.espresso.core)
 }

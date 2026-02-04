@@ -2,29 +2,70 @@ package com.dvt.loyalty.client;
 
 import io.vertx.core.Future;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.DecodeException;
 import io.vertx.core.json.Json;
 import io.vertx.ext.web.client.WebClient;
+import io.vertx.ext.web.client.WebClientOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
 /**
- * Fetches promo details from external promo service.
- * Has a short timeout since promos are nice-to-have - we don't want to block the quote.
+ * HTTP client for the Promotional Code service.
+ *
+ * Fetches bonus points for promotional codes. Promo is optional - failures are
+ * handled gracefully by awarding 0 bonus points with a warning. Thread-safe.
+ *
+ * @see PromoResponse
+ * @see UpstreamException
  */
-public final class PromoClient {
+public final class PromoClient implements AutoCloseable {
+
+  private static final Logger log = LoggerFactory.getLogger(PromoClient.class);
 
   private final WebClient webClient;
   private final String baseUrl;
   private final long timeoutMs;
 
+  /**
+   * Creates a new PromoClient.
+   *
+   * @param vertx     the Vert.x instance
+   * @param baseUrl   base URL of the promo service
+   * @param timeoutMs request timeout in milliseconds
+   */
   public PromoClient(Vertx vertx, String baseUrl, long timeoutMs) {
-    this.webClient = WebClient.create(vertx);
+    WebClientOptions options = new WebClientOptions()
+      .setMaxPoolSize(10)
+      .setKeepAlive(true)
+      .setConnectTimeout(5000)
+      .setIdleTimeout(30);
+    this.webClient = WebClient.create(vertx, options);
     this.baseUrl = Objects.requireNonNull(baseUrl);
     this.timeoutMs = timeoutMs;
+    log.debug("PromoClient initialized with baseUrl={}, timeoutMs={}, poolSize={}", baseUrl, timeoutMs, options.getMaxPoolSize());
   }
 
+  /** Closes the underlying HTTP client. */
+  @Override
+  public void close() {
+    if (webClient != null) {
+      webClient.close();
+      log.debug("PromoClient WebClient closed");
+    }
+  }
+
+  /**
+   * Fetches bonus points and expiry information for a promotional code.
+   *
+   * @param promoCode the promotional code to look up (e.g., "SUMMER25")
+   * @return a Future containing the bonus points and expiry date
+   * @throws UpstreamException if the promo service returns non-200 or invalid response
+   */
   public Future<PromoResponse> fetch(String promoCode) {
     String url = baseUrl + "/promo/" + promoCode;
+    log.debug("Fetching promo: code={}", promoCode);
 
     return webClient
       .getAbs(url)
@@ -32,16 +73,20 @@ public final class PromoClient {
       .send()
       .compose(resp -> {
         if (resp.statusCode() != 200) {
+          log.warn("Promo service returned error: code={}, status={}", promoCode, resp.statusCode());
           return Future.failedFuture(new UpstreamException("PROMO", resp.statusCode(), "Promo service error"));
         }
         try {
           var parsed = Json.decodeValue(resp.body(), PromoResponse.class);
           if (parsed == null) {
+            log.warn("Promo response missing required fields: code={}", promoCode);
             return Future.failedFuture(new UpstreamException("PROMO", 502, "Promo response missing fields"));
           }
+          log.debug("Promo fetched successfully: code={}, bonusPoints={}", promoCode, parsed.bonusPoints());
           return Future.succeededFuture(parsed);
-        } catch (Exception e) {
-          return Future.failedFuture(new UpstreamException("PROMO", 502, "Promo response invalid JSON"));
+        } catch (DecodeException e) {
+          log.error("Failed to parse Promo response: code={}", promoCode, e);
+          return Future.failedFuture(new UpstreamException("PROMO", 502, "Promo response invalid JSON: " + e.getMessage()));
         }
       });
   }
